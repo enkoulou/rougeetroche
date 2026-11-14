@@ -136,16 +136,34 @@
   const marque = document.querySelector('.marque');
   if (marque) {
     let vu = false;
+    // le haut de la photo est-il clair ? On mesure la luminosité du coin haut-gauche de l'image (une fois par photo)
+    const mesures = new WeakMap();
+    const hautClair = pg => {
+      const im = pg.querySelector('img.ph'), src = im && (im.currentSrc || im.src);
+      if (!im || !im.naturalWidth || /^data:/.test(src)) return true;
+      const m = mesures.get(im); if (m && m.src === src) return m.v;
+      try {
+        const c = document.createElement('canvas'); c.width = 16; c.height = 8;
+        const x = c.getContext('2d'); x.drawImage(im, 0, 0, im.naturalWidth * 0.6, im.naturalHeight * 0.18, 0, 0, 16, 8);
+        const d = x.getImageData(0, 0, 16, 8).data; let s = 0;
+        for (let i = 0; i < d.length; i += 4) s += 0.3 * d[i] + 0.59 * d[i + 1] + 0.11 * d[i + 2];
+        const v = s / (d.length / 4) > 135; mesures.set(im, { src, v }); return v;
+      } catch (_) { return true; }
+    };
     const teinte = () => {
       vu = false;
       const r = marque.getBoundingClientRect();
       const dessous = document.elementsFromPoint(r.left + r.width / 2, r.top + r.height / 2).find(el => !el.closest('.marque, .ui'));
-      const z = dessous && dessous.closest('.pg, .somm, .lb');
-      marque.classList.toggle('clair', !z || (z.classList.contains('pg') && z.classList.contains('ink')));
+      // zones sombres : photos, sommaire, visionneuse, formulaire, pied de page → signature claire, pas de bandeau
+      const z = dessous && dessous.closest('.pg, .somm, .lb, .form, .fin, .colbar');
+      // signature rouge : sur le papier, et sur les photos sans voile (écrans « ink ») dont le haut est réellement clair ;
+      // partout ailleurs (photos sombres ou voilées), elle est claire
+      marque.classList.toggle('clair', !z || (z.classList.contains('ink') && hautClair(z)));
+      root.classList.toggle('papier', !z);   // sur le papier, l'en-tête reçoit un fond plein (voir site.css)
     };
     const plusTard = () => { if (!vu) { vu = true; setTimeout(teinte, 60); } };
     addEventListener('scroll', plusTard, { passive: true }); addEventListener('resize', plusTard);
-    document.addEventListener('click', () => setTimeout(teinte, 60)); document.addEventListener('transitionend', plusTard);
+    document.addEventListener('click', () => setTimeout(teinte, 60)); document.addEventListener('transitionend', plusTard); document.addEventListener('load', plusTard, true);   // une photo vient d'arriver : on remesure
     teinte();
   }
 

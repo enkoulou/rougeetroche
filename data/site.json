@@ -1,6 +1,6 @@
 {
   "_aide": "Infos générales du site. Après modification, relancez : python3 outils/build.py",
-  "nom": "Rouge et Roche",
+  "nom": "Rouge & Roche",
   "domaine": "https://www.rougeetroche-marseille.fr",
   "telephone": "04 91 73 03 14",
   "telephoneLien": "+33491730314",

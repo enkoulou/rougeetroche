@@ -80,7 +80,8 @@
     const heure = x => { const h = +x.slice(0, 2), m = x.slice(3, 5); return en ? (h % 12 || 12) + (m === '00' ? '' : ':' + m) + (h < 12 ? ' am' : ' pm') : h + ' h' + (m === '00' ? '' : ' ' + m); };
     const date = d => { const mo = +d.slice(5, 7), j = +d.slice(8, 10); return en ? j + ' ' + MOIS_EN[mo - 1] : (j === 1 ? '1er' : j) + ' ' + MOIS_FR[mo - 1]; };
     const jour = en ? JOURS[aw.jour] : aw.jour;
-    const nd = en ? date(no.dates.debut) + ' to ' + date(no.dates.fin) : 'du ' + date(no.dates.debut) + ' au ' + date(no.dates.fin);
+    const an = d => ' ' + d.slice(0, 4);   // l'année est écrite : le menu court sur deux années
+    const nd = en ? date(no.dates.debut) + an(no.dates.debut) + ' to ' + date(no.dates.fin) + an(no.dates.fin) : 'du ' + date(no.dates.debut) + an(no.dates.debut) + ' au ' + date(no.dates.fin) + an(no.dates.fin);
     const groupes = no.composition.map(g => { const n = g.plats.map(p => L(p).split(',')[0].trim()).filter(Boolean); return n.map((x, i) => i ? x.charAt(0).toLowerCase() + x.slice(1) : x).join(en ? ' or ' : ' ou ') + '.'; });
     return {
       'pd-chip': (en ? 'Breakfast ' : 'Petit-déjeuner ') + RR.euro(pd.prix), 'pd-prix': RR.euro(pd.prix), 'pd-resume': L(pd.resume),
@@ -131,7 +132,7 @@
           return `<section class="rub"><h2><span class="m"><span>${esc(L(s.titre))}</span></span>${s.prixSection ? `<small>${RR.euro(s.prixSection)}</small>` : ''}</h2>
             <div class="corps">${s.aCompleter ? `<p class="todo">${esc(L(s.note))}</p>` : (s.note ? `<p class="note">${esc(L(s.note))}</p>` : '')}
             <div class="liste">${s.plats.map(p => `<div class="li"><span>${esc(L(p.nom))}</span><b>${prix(p.prix)}</b></div>`).join('')}</div></div></section>`
-            + (v ? `<figure class="vue" style="--pos:${v[2]}"><img src="${RR.base}assets/img/${v[0].slice(0, -2)}.jpg" srcset="${RR.base}assets/img/${v[0].slice(0, -2)}.jpg 1000w, ${RR.base}assets/img/${v[0].slice(0, -2)}-m.jpg 1400w" sizes="100vw" alt="${esc(v[1])}" loading="lazy"><span class="u">${esc(v[1])}</span></figure>` : '');
+            + (v ? `<figure class="vue" style="--pos:${v[2]}"><img src="${RR.base}assets/img/${v[0].slice(0, -2)}.jpg" srcset="${RR.base}assets/img/${v[0].slice(0, -2)}.jpg 1000w, ${RR.base}assets/img/${v[0].slice(0, -2)}-m.jpg 1400w" sizes="100vw" alt="${esc(v[1])}" decoding="async"><span class="u">${esc(v[1])}</span></figure>` : '');
         }).join('');
         if (!RR.anime) return;
         ScrollTrigger.getAll().filter(s => s.vars.id === 'rub').forEach(s => s.kill());
@@ -172,7 +173,7 @@
       if (i) gsap.fromTo(ph, { scale: 1.18 }, { scale: 1, ease: 'none', scrollTrigger: { trigger: pg, start: 'top bottom', end: 'top top', scrub: true } });
       gsap.to(ph, { yPercent: -6, ease: 'none', scrollTrigger: { trigger: pg, start: 'bottom bottom', end: 'bottom top', scrub: true } });
       const tl = lignes(pg, i > 0);
-      if (i) ScrollTrigger.create({ trigger: pg, start: 'top 45%', onEnter: () => tl.play(), onLeaveBack: () => tl.reverse() });
+      if (i) ScrollTrigger.create({ trigger: pg, start: 'top 82%', onEnter: () => tl.play() });   // le titre arrive dès que l'écran entre, et ne se recache plus
       else gsap.fromTo(ph, { scale: 1.12 }, { scale: 1, duration: 1.2, ease: 'power3.out' });
       ScrollTrigger.create({ trigger: pg, start: 'top 50%', end: 'bottom 50%', onToggle: s => { if (s.isActive) folio(i); } });
     });
@@ -182,7 +183,7 @@
       if (cov) { gsap.fromTo(ph, { scale: 1.12 }, { scale: 1, duration: 1.2, ease: 'power3.out' }); lignes(pg, false, 0); gsap.to(ph, { yPercent: 10, ease: 'none', scrollTrigger: { trigger: pg, start: 'top top', end: 'bottom top', scrub: true } }); }
       else {
         gsap.fromTo(ph, { scale: 1.16, yPercent: -4 }, { scale: 1, yPercent: 4, ease: 'none', scrollTrigger: { trigger: pg, start: 'top bottom', end: 'bottom top', scrub: true } });
-        const tl = lignes(pg, true); ScrollTrigger.create({ trigger: pg, start: 'top 55%', onEnter: () => tl.play(), onLeaveBack: () => tl.reverse() });
+        const tl = lignes(pg, true); ScrollTrigger.create({ trigger: pg, start: 'top 85%', onEnter: () => tl.play() });
       }
     });
     /* blocs sur papier : les titres montent, les listes se déroulent */

@@ -298,3 +298,21 @@ form.dem{display:grid;grid-template-columns:1fr;gap:26px 30px}
 @media (min-width:900px) and (max-width:1080px){.rubs{gap:14px}.ui nav{gap:14px}.rubs a,.ui nav .res{letter-spacing:.1em}}
 /* le titre d'ouverture attend que son animation soit prête (classe « pret » posée par les scripts) : pas de sursaut */
 html.anime:not(.pret) .cov .tx,html.anime:not(.pret) .stack .pg:first-child .tx,html.anime:not(.pret) .issue{visibility:hidden}
+
+/* ── en-tête : fond plein dès qu'il passe sur du papier (offres, privatisation, accès…), transparent sur les photos ── */
+body::before{content:"";position:fixed;z-index:49;left:0;right:0;top:0;height:calc(52px + env(safe-area-inset-top));background:var(--paper);border-bottom:1px solid var(--rule);opacity:0;pointer-events:none;transition:opacity .25s ease}
+html.papier body::before{opacity:1}
+@media (min-width:900px){body::before{height:calc(60px + env(safe-area-inset-top))}}
+
+/* ── liens d'action (« Le détail », « Toute la carte », « Demander un devis ») : plus grands, plus marqués ── */
+.go{font-size:13px;font-weight:600;letter-spacing:.12em;border-bottom-width:2px;padding:8px 0 5px}
+.pg:not(.ink) .tx:not(.bloc) .go{text-shadow:0 1px 14px rgba(14,12,10,.7)}
+/* boutons au trait (Appeler, Itinéraire) */
+.cta.bord{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}
+/* bouton de saison : plus lisible */
+.ui.bot [data-bascule]{font-weight:600;border-bottom:1px solid currentColor;padding-bottom:2px}
+/* zone « Votre projet » : un vrai cadre */
+.fld textarea{border:1px solid rgba(244,239,231,.6);background:rgba(244,239,231,.07);padding:14px 16px;min-height:150px}
+.fld textarea:focus{border-color:var(--paper);background:rgba(244,239,231,.11)}
+/* sans animations (réglage du visiteur, ou ?calme=1) : pas de fondu non plus */
+html.calme body::before,html.calme .marque{transition:none}
