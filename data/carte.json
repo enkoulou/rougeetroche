@@ -1,0 +1,758 @@
+{
+  "_aide": "Modifiez ce fichier pour changer la carte. 'prix' est un nombre (12 ou 9.5) ou une liste de formats {\"25 cl\": 5, \"50 cl\": 9.5}. Mettez prix à null pour afficher « prix à venir ». 'vedette': true affiche le plat sur la page d'accueil (avec 'photo'). Une section avec \"aCompleter\": true affiche un encart jaune.",
+  "miseAJour": "Carte relevée sur l'ardoise du restaurant (photo du 14 novembre 2026)",
+  "cartes": [
+    {
+      "id": "carte",
+      "titre": {
+        "fr": "La carte",
+        "en": "Food"
+      },
+      "sections": [
+        {
+          "titre": {
+            "fr": "Pour commencer",
+            "en": "To start"
+          },
+          "plats": [
+            {
+              "nom": {
+                "fr": "Poireaux vinaigrette à l'ancienne",
+                "en": "Leeks vinaigrette, old-style"
+              },
+              "prix": 11
+            },
+            {
+              "nom": {
+                "fr": "Œuf poché en meurette, lardons et champignons",
+                "en": "Poached egg in red wine sauce, bacon and mushrooms"
+              },
+              "prix": 14,
+              "vedette": true,
+              "photo": "o054"
+            },
+            {
+              "nom": {
+                "fr": "Panisses dorées, rouille maison",
+                "en": "Golden panisses (chickpea fries), house rouille"
+              },
+              "prix": 12
+            },
+            {
+              "nom": {
+                "fr": "Sardines marinées, citron & huile d'olive",
+                "en": "Marinated sardines, lemon & olive oil"
+              },
+              "prix": 11
+            },
+            {
+              "nom": {
+                "fr": "Os à moelle rôti, fleur de sel",
+                "en": "Roast bone marrow, fleur de sel"
+              },
+              "prix": 14
+            },
+            {
+              "nom": {
+                "fr": "Foie gras de canard, chutney de saison",
+                "en": "Duck foie gras, seasonal chutney"
+              },
+              "prix": 17
+            },
+            {
+              "nom": {
+                "fr": "La Tartine Rouge & Roche",
+                "en": "The Rouge & Roche tartine"
+              },
+              "prix": 24
+            }
+          ]
+        },
+        {
+          "titre": {
+            "fr": "Les grandes salades",
+            "en": "Large salads"
+          },
+          "plats": [
+            {
+              "nom": {
+                "fr": "La César poulet croustillant & parmesan",
+                "en": "Caesar, crispy chicken & parmesan"
+              },
+              "prix": 21
+            },
+            {
+              "nom": {
+                "fr": "L'Automnale, butternut rôti, jambon cru, grenade & graines de courge",
+                "en": "Autumn salad, roast butternut, cured ham, pomegranate & pumpkin seeds"
+              },
+              "prix": 23,
+              "vedette": true,
+              "photo": "o098"
+            },
+            {
+              "nom": {
+                "fr": "La Chèvre Chaud, lardons, noix & miel",
+                "en": "Warm goat's cheese, bacon, walnuts & honey"
+              },
+              "prix": 24
+            }
+          ]
+        },
+        {
+          "titre": {
+            "fr": "À table",
+            "en": "Mains"
+          },
+          "plats": [
+            {
+              "nom": {
+                "fr": "Poulpe grillé, pomme de terre grenaille & sauce aux poivrons",
+                "en": "Grilled octopus, baby potatoes & pepper sauce"
+              },
+              "prix": 29
+            },
+            {
+              "nom": {
+                "fr": "Sole meunière, beurre noisette et pommes vapeur",
+                "en": "Sole meunière, brown butter and steamed potatoes"
+              },
+              "prix": 33,
+              "vedette": true,
+              "photo": "o094"
+            },
+            {
+              "nom": {
+                "fr": "Dos de cabillaud en croûte d'herbes, mousseline de patate douce",
+                "en": "Herb-crusted cod loin, sweet potato mousseline"
+              },
+              "prix": 27
+            },
+            {
+              "nom": {
+                "fr": "Soupe de poissons de roche, rouille et croûtons",
+                "en": "Rock fish soup, rouille and croutons"
+              },
+              "prix": 28,
+              "vedette": true,
+              "photo": "o082"
+            },
+            {
+              "nom": {
+                "fr": "Paleron de bœuf confit, polenta dorée et jus corsé",
+                "en": "Slow-cooked beef chuck, golden polenta and rich jus"
+              },
+              "prix": 25,
+              "vedette": true,
+              "photo": "o089"
+            },
+            {
+              "nom": {
+                "fr": "Entrecôte de bœuf grillée, frites maison et sauce Rouge et Roche",
+                "en": "Grilled rib-eye steak, house fries and Rouge et Roche sauce"
+              },
+              "prix": 35
+            },
+            {
+              "nom": {
+                "fr": "Coquillettes crémeuses à la truffe, copeaux de parmesan",
+                "en": "Creamy truffle coquillettes pasta, parmesan shavings"
+              },
+              "prix": 25
+            }
+          ]
+        },
+        {
+          "titre": {
+            "fr": "Menu enfant",
+            "en": "Kids' menu"
+          },
+          "prixSection": 15,
+          "note": {
+            "fr": "Plat au choix : steak haché Black Angus, pizza fromage ou poulet pané. Dessert : moelleux au chocolat.",
+            "en": "Choice of main: Black Angus burger patty, cheese pizza or breaded chicken. Dessert: chocolate fondant."
+          },
+          "plats": []
+        },
+        {
+          "titre": {
+            "fr": "Nos desserts",
+            "en": "Desserts"
+          },
+          "plats": [
+            {
+              "nom": {
+                "fr": "Royal Chocolat maison",
+                "en": "House Royal chocolate cake"
+              },
+              "prix": 11
+            },
+            {
+              "nom": {
+                "fr": "Île flottante maison",
+                "en": "House floating island"
+              },
+              "prix": 9
+            },
+            {
+              "nom": {
+                "fr": "Tiramisu maison",
+                "en": "House tiramisu"
+              },
+              "prix": 9
+            },
+            {
+              "nom": {
+                "fr": "Pavlova maison",
+                "en": "House pavlova"
+              },
+              "prix": 9
+            },
+            {
+              "nom": {
+                "fr": "Tarte tatin maison",
+                "en": "House tarte tatin"
+              },
+              "prix": 9
+            },
+            {
+              "nom": {
+                "fr": "L'Indécis",
+                "en": "L'Indécis (dessert sampler)"
+              },
+              "prix": 12
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "boissons",
+      "titre": {
+        "fr": "Les boissons",
+        "en": "Drinks"
+      },
+      "sections": [
+        {
+          "titre": {
+            "fr": "Les cocktails",
+            "en": "Cocktails"
+          },
+          "plats": [
+            {
+              "nom": {
+                "fr": "Mojito",
+                "en": "Mojito"
+              },
+              "prix": 12
+            },
+            {
+              "nom": {
+                "fr": "Caïpirinha",
+                "en": "Caïpirinha"
+              },
+              "prix": 12
+            },
+            {
+              "nom": {
+                "fr": "Ti-punch",
+                "en": "Ti-punch"
+              },
+              "prix": 12
+            },
+            {
+              "nom": {
+                "fr": "Basilic Smash",
+                "en": "Basilic Smash"
+              },
+              "prix": 14
+            },
+            {
+              "nom": {
+                "fr": "Mojito fraise",
+                "en": "Mojito fraise"
+              },
+              "prix": 14
+            },
+            {
+              "nom": {
+                "fr": "London Mule",
+                "en": "London Mule"
+              },
+              "prix": 12
+            },
+            {
+              "nom": {
+                "fr": "Moscow Mule",
+                "en": "Moscow Mule"
+              },
+              "prix": 12
+            },
+            {
+              "nom": {
+                "fr": "Caribbean Mule",
+                "en": "Caribbean Mule"
+              },
+              "prix": 12
+            }
+          ]
+        },
+        {
+          "titre": {
+            "fr": "Les spritz",
+            "en": "Spritz"
+          },
+          "plats": [
+            {
+              "nom": {
+                "fr": "Aperol",
+                "en": "Aperol"
+              },
+              "prix": 10
+            },
+            {
+              "nom": {
+                "fr": "Lemon",
+                "en": "Lemon"
+              },
+              "prix": 12
+            },
+            {
+              "nom": {
+                "fr": "Hugo",
+                "en": "Hugo"
+              },
+              "prix": 12
+            }
+          ]
+        },
+        {
+          "titre": {
+            "fr": "Les apéritifs",
+            "en": "Aperitifs"
+          },
+          "plats": [
+            {
+              "nom": {
+                "fr": "Pastis 51",
+                "en": "Pastis 51"
+              },
+              "prix": 4
+            },
+            {
+              "nom": {
+                "fr": "Ricard",
+                "en": "Ricard"
+              },
+              "prix": 4
+            },
+            {
+              "nom": {
+                "fr": "Mauresque",
+                "en": "Mauresque"
+              },
+              "prix": 4.5
+            },
+            {
+              "nom": {
+                "fr": "Perroquet",
+                "en": "Perroquet"
+              },
+              "prix": 4.5
+            },
+            {
+              "nom": {
+                "fr": "Tomate",
+                "en": "Tomate"
+              },
+              "prix": 4.5
+            },
+            {
+              "nom": {
+                "fr": "Martini",
+                "en": "Martini"
+              },
+              "prix": 5
+            },
+            {
+              "nom": {
+                "fr": "Porto",
+                "en": "Porto"
+              },
+              "prix": 5
+            },
+            {
+              "nom": {
+                "fr": "Whisky",
+                "en": "Whisky"
+              },
+              "prix": 8
+            },
+            {
+              "nom": {
+                "fr": "Vodka",
+                "en": "Vodka"
+              },
+              "prix": 8
+            },
+            {
+              "nom": {
+                "fr": "Gin",
+                "en": "Gin"
+              },
+              "prix": 8
+            },
+            {
+              "nom": {
+                "fr": "Kir Cassis",
+                "en": "Kir Cassis"
+              },
+              "prix": 7
+            },
+            {
+              "nom": {
+                "fr": "Kir Royal",
+                "en": "Kir Royal"
+              },
+              "prix": 10
+            }
+          ]
+        },
+        {
+          "titre": {
+            "fr": "Les bières",
+            "en": "Beers"
+          },
+          "plats": [
+            {
+              "nom": {
+                "fr": "Pietra Blonde (pression)",
+                "en": "Pietra Blonde (draught)"
+              },
+              "prix": {
+                "25 cl": 5,
+                "50 cl": 9.5
+              }
+            },
+            {
+              "nom": {
+                "fr": "Zoumai Gaby blanche (pression)",
+                "en": "Zoumai Gaby wheat beer (draught)"
+              },
+              "prix": {
+                "25 cl": 6,
+                "50 cl": 11
+              }
+            },
+            {
+              "nom": {
+                "fr": "Zoumai Maire IPA (pression)",
+                "en": "Zoumai Maire IPA (draught)"
+              },
+              "prix": {
+                "25 cl": 6,
+                "50 cl": 11
+              }
+            },
+            {
+              "nom": {
+                "fr": "Corona 0 % (sans alcool)",
+                "en": "Corona 0% (alcohol-free)"
+              },
+              "prix": 7
+            }
+          ]
+        },
+        {
+          "titre": {
+            "fr": "Sans alcool",
+            "en": "Alcohol-free"
+          },
+          "plats": [
+            {
+              "nom": {
+                "fr": "Virgin Mojito",
+                "en": "Virgin Mojito"
+              },
+              "prix": 8
+            },
+            {
+              "nom": {
+                "fr": "Virgin Mojito Fraise",
+                "en": "Virgin Strawberry Mojito"
+              },
+              "prix": 10
+            },
+            {
+              "nom": {
+                "fr": "L'Authentique café glacé",
+                "en": "Classic iced coffee"
+              },
+              "prix": 5
+            },
+            {
+              "nom": {
+                "fr": "Ice Latte",
+                "en": "Iced latte"
+              },
+              "prix": 5
+            },
+            {
+              "nom": {
+                "fr": "Coca, Coca Zéro, Ice Tea, Orangina, Perrier, Fanta, Limonade des Cigales, Schweppes",
+                "en": "Coke, Coke Zero, Ice Tea, Orangina, Perrier, Fanta, Limonade des Cigales, Schweppes"
+              },
+              "prix": 4.5
+            },
+            {
+              "nom": {
+                "fr": "Sirops : grenadine, menthe, fraise, pêche, Pac, citron, orgeat",
+                "en": "Cordials: grenadine, mint, strawberry, peach, Pac, lemon, orgeat"
+              },
+              "prix": 3
+            },
+            {
+              "nom": {
+                "fr": "Orezza (1 L)",
+                "en": "Orezza sparkling water (1 L)"
+              },
+              "prix": 7
+            },
+            {
+              "nom": {
+                "fr": "Zilia (1 L)",
+                "en": "Zilia still water (1 L)"
+              },
+              "prix": 7
+            }
+          ]
+        },
+        {
+          "titre": {
+            "fr": "Les digestifs",
+            "en": "Digestifs"
+          },
+          "plats": [
+            {
+              "nom": {
+                "fr": "Limoncello",
+                "en": "Limoncello"
+              },
+              "prix": 10
+            },
+            {
+              "nom": {
+                "fr": "Get 27",
+                "en": "Get 27"
+              },
+              "prix": 10
+            },
+            {
+              "nom": {
+                "fr": "Diplomatico",
+                "en": "Diplomatico"
+              },
+              "prix": 10
+            },
+            {
+              "nom": {
+                "fr": "Cognac Hennessy",
+                "en": "Cognac Hennessy"
+              },
+              "prix": 10
+            },
+            {
+              "nom": {
+                "fr": "Manzana",
+                "en": "Manzana"
+              },
+              "prix": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "vins",
+      "titre": {
+        "fr": "Les vins",
+        "en": "Wines"
+      },
+      "sections": [
+        {
+          "titre": {
+            "fr": "Vins blancs",
+            "en": "White"
+          },
+          "plats": [
+            {
+              "nom": {
+                "fr": "Domaine Bodin — AOC Cassis",
+                "en": "Domaine Bodin — AOC Cassis"
+              },
+              "prix": 39
+            },
+            {
+              "nom": {
+                "fr": "Domaine Gavoty, La Cigale — IGP Var",
+                "en": "Domaine Gavoty, La Cigale — IGP Var"
+              },
+              "prix": 30
+            },
+            {
+              "nom": {
+                "fr": "Domaine Triennes, Les Auréliens — IGP Méditerranée",
+                "en": "Domaine Triennes, Les Auréliens — IGP Méditerranée"
+              },
+              "prix": 32
+            },
+            {
+              "nom": {
+                "fr": "Château Henri Bonnaud — AOC Palette",
+                "en": "Château Henri Bonnaud — AOC Palette"
+              },
+              "prix": 49
+            },
+            {
+              "nom": {
+                "fr": "Domaine des Béates, Les Béatines — AOC Coteaux d'Aix-en-Provence",
+                "en": "Domaine des Béates, Les Béatines — AOC Coteaux d'Aix-en-Provence"
+              },
+              "prix": 34
+            },
+            {
+              "nom": {
+                "fr": "Domaine Dauvissat, Saint Pierre — AOC Chablis",
+                "en": "Domaine Dauvissat, Saint Pierre — AOC Chablis"
+              },
+              "prix": 42
+            }
+          ]
+        },
+        {
+          "titre": {
+            "fr": "Vins rosés",
+            "en": "Rosé"
+          },
+          "plats": [
+            {
+              "nom": {
+                "fr": "Domaine Bodin — AOC Cassis",
+                "en": "Domaine Bodin — AOC Cassis"
+              },
+              "prix": 39
+            },
+            {
+              "nom": {
+                "fr": "Domaine Gavoty, La Cigale — IGP Var",
+                "en": "Domaine Gavoty, La Cigale — IGP Var"
+              },
+              "prix": 30
+            },
+            {
+              "nom": {
+                "fr": "Domaine Triennes, Les Auréliens — IGP Méditerranée",
+                "en": "Domaine Triennes, Les Auréliens — IGP Méditerranée"
+              },
+              "prix": 32
+            },
+            {
+              "nom": {
+                "fr": "Château Henri Bonnaud — AOC Palette",
+                "en": "Château Henri Bonnaud — AOC Palette"
+              },
+              "prix": 49
+            },
+            {
+              "nom": {
+                "fr": "Domaine des Béates, Les Béatines — AOC Coteaux d'Aix-en-Provence",
+                "en": "Domaine des Béates, Les Béatines — AOC Coteaux d'Aix-en-Provence"
+              },
+              "prix": 34
+            }
+          ]
+        },
+        {
+          "titre": {
+            "fr": "Vins rouges",
+            "en": "Red"
+          },
+          "plats": [
+            {
+              "nom": {
+                "fr": "Domaine Bodin — AOC Cassis",
+                "en": "Domaine Bodin — AOC Cassis"
+              },
+              "prix": 39
+            },
+            {
+              "nom": {
+                "fr": "Domaine Gavoty, La Cigale — IGP Var",
+                "en": "Domaine Gavoty, La Cigale — IGP Var"
+              },
+              "prix": 30
+            },
+            {
+              "nom": {
+                "fr": "Domaine Triennes, Les Auréliens — IGP Méditerranée",
+                "en": "Domaine Triennes, Les Auréliens — IGP Méditerranée"
+              },
+              "prix": 32
+            },
+            {
+              "nom": {
+                "fr": "Château Henri Bonnaud — AOC Palette",
+                "en": "Château Henri Bonnaud — AOC Palette"
+              },
+              "prix": 51
+            }
+          ]
+        },
+        {
+          "titre": {
+            "fr": "Champagne",
+            "en": "Champagne"
+          },
+          "plats": [
+            {
+              "nom": {
+                "fr": "H. Blin Brut Tradition — AOC Champagne",
+                "en": "H. Blin Brut Tradition — AOC Champagne"
+              },
+              "prix": 95
+            }
+          ]
+        },
+        {
+          "titre": {
+            "fr": "Au verre",
+            "en": "By the glass"
+          },
+          "plats": [
+            {
+              "nom": {
+                "fr": "Domaine Bodin, AOC Cassis — blanc, rosé ou rouge",
+                "en": "Domaine Bodin, AOC Cassis — white, rosé or red"
+              },
+              "prix": 9
+            },
+            {
+              "nom": {
+                "fr": "Domaine Triennes, Les Auréliens — blanc, rosé ou rouge",
+                "en": "Domaine Triennes, Les Auréliens — white, rosé or red"
+              },
+              "prix": 7
+            },
+            {
+              "nom": {
+                "fr": "H. Blin Brut Tradition — Champagne",
+                "en": "H. Blin Brut Tradition — Champagne"
+              },
+              "prix": 15
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

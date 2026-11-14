@@ -1,0 +1,23 @@
+{
+  "_aide": "Horaires affichés sur le site et transmis à Google (schema.org). Confirmés par le restaurant : tous les jours, 8 h – 22 h.",
+  "jours": [
+    {
+      "jours": [
+        "lundi",
+        "mardi",
+        "mercredi",
+        "jeudi",
+        "vendredi",
+        "samedi",
+        "dimanche"
+      ],
+      "ouverture": "08:00",
+      "fermeture": "22:00"
+    }
+  ],
+  "note": {
+    "fr": "Ouvert toute l'année, sans fermeture annuelle",
+    "en": "Open all year, no annual closure"
+  },
+  "heuresAConfirmer": false
+}

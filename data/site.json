@@ -1,0 +1,44 @@
+{
+  "_aide": "Infos générales du site. Après modification, relancez : python3 outils/build.py",
+  "nom": "Rouge et Roche",
+  "domaine": "https://www.rougeetroche-marseille.fr",
+  "telephone": "04 91 73 03 14",
+  "telephoneLien": "+33491730314",
+  "adresse": {
+    "rue": "46 avenue de Montredon",
+    "codePostal": "13008",
+    "ville": "Marseille"
+  },
+  "email": "fiducial@rougeetroche.fr",
+  "formulaireEndpoint": "",
+  "_formulaireEndpoint": "URL d'un service de formulaire (Formspree, Netlify Forms…) si vous en utilisez un",
+  "zenchefId": "367179",
+  "instagram": "https://www.instagram.com/rougeetroche/",
+  "facebook": "https://www.facebook.com/rougeetroche",
+  "horaires": {
+    "ouverture": "08:00",
+    "fermeture": "22:00",
+    "aConfirmer": false
+  },
+  "groupes": {
+    "capaciteSalle": 80,
+    "capaciteTerrasse": 200,
+    "formules": {
+      "fr": "Formule de groupe ou privatisation, sur devis selon votre besoin.",
+      "en": "Group menu or private hire, quoted to suit your needs."
+    }
+  },
+  "parking": {
+    "fr": "Parking de la plage",
+    "en": "The beach car park"
+  },
+  "editeur": {
+    "societe": "SAS TROPICANA",
+    "capital": "7 500 €",
+    "siret": "340 911 684 00025",
+    "tva": "FR44 340 911 684",
+    "naf": "5610A",
+    "siege": "46 avenue de Montredon, 13008 Marseille",
+    "_aCompleter": "Ville du RCS, directeur de la publication, hébergeur (à la mise en ligne)"
+  }
+}

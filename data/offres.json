@@ -1,0 +1,109 @@
+{
+  "_aide": "Offres affichées sur l'accueil et la page Offres. Se modifie dans l'administration (onglet Offres) ; le site les lit directement. 'actif': false retire l'offre du site. Le menu de Noël disparaît seul après sa date de fin.",
+  "offres": [
+    {
+      "id": "petit-dejeuner",
+      "titre": {
+        "fr": "Formule petit-déjeuner",
+        "en": "Breakfast deal"
+      },
+      "quand": {
+        "fr": "Tous les jours",
+        "en": "Every day"
+      },
+      "prix": 9,
+      "resume": {
+        "fr": "Boisson chaude, viennoiserie de Mickael Martinez et jus de fruits.",
+        "en": "Hot drink, pastry by Mickael Martinez and fruit juice."
+      },
+      "photo": "",
+      "actif": true,
+      "heure": "08:00"
+    },
+    {
+      "id": "noel",
+      "titre": {
+        "fr": "Menu de Noël",
+        "en": "Christmas menu"
+      },
+      "resume": {
+        "fr": "Entrée, plat et dessert",
+        "en": "Starter, main and dessert"
+      },
+      "prix": 48,
+      "dates": {
+        "debut": "2026-12-01",
+        "fin": "2027-01-02"
+      },
+      "composition": [
+        {
+          "titre": {
+            "fr": "Entrées au choix",
+            "en": "Starters"
+          },
+          "plats": [
+            {
+              "fr": "Foie gras de canard maison, chutney de figues et pain d'épices toasté",
+              "en": "House duck foie gras, fig chutney and toasted gingerbread"
+            },
+            {
+              "fr": "Gravlax de saumon",
+              "en": "Salmon gravlax"
+            }
+          ]
+        },
+        {
+          "titre": {
+            "fr": "Plats au choix",
+            "en": "Mains"
+          },
+          "plats": [
+            {
+              "fr": "Suprême de chapon fermier, sauce aux cèpes, écrasé de pommes de terre à la truffe",
+              "en": "Free-range capon supreme, cep sauce, crushed potatoes with truffle"
+            },
+            {
+              "fr": "Filet de Saint-Pierre, beurre blanc aux agrumes, purée de carottes à l'orange",
+              "en": "John Dory fillet, citrus beurre blanc, carrot and orange purée"
+            }
+          ]
+        },
+        {
+          "titre": {
+            "fr": "Desserts au choix",
+            "en": "Desserts"
+          },
+          "plats": [
+            {
+              "fr": "Royal chocolat",
+              "en": "Royal chocolate cake"
+            },
+            {
+              "fr": "Tiramisu de Noël",
+              "en": "Christmas tiramisu"
+            }
+          ]
+        }
+      ],
+      "photo": "o022",
+      "actif": true,
+      "surReservation": true
+    },
+    {
+      "id": "afterwork",
+      "titre": {
+        "fr": "Afterwork",
+        "en": "Afterwork"
+      },
+      "resume": {
+        "fr": "Planche de charcuterie et fromage, croque-monsieur maison.",
+        "en": "Charcuterie and cheese board, homemade croque-monsieur."
+      },
+      "photo": "j059",
+      "actif": true,
+      "jour": "jeudi",
+      "debut": "16:00",
+      "fin": "20:00"
+    }
+  ]
+}

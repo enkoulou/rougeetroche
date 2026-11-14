@@ -1,0 +1,7 @@
+{
+  "_aide": "Dates de bascule entre les deux ambiances, au format MM-JJ. Le site affiche l'ambiance 'hiver' entre debutHiver et finHiver (inclus), 'ete' le reste de l'année. 'forcer' : mettre \"hiver\" ou \"ete\" pour imposer une ambiance, ou null pour laisser les dates décider.",
+  "debutHiver": "11-15",
+  "finHiver": "03-15",
+  "forcer": null,
+  "_note": "Dates fixées par le restaurant : hiver du 15 novembre au 15 mars."
+}

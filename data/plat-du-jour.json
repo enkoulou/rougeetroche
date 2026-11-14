@@ -1,0 +1,13 @@
+{
+  "_aide": "Un plat par date (AAAA-MM-JJ). Seul le plat dont la date est celle du jour s'affiche ; sinon le site écrit « Plat du jour chaque midi, demandez-le en salle ». 'photo' est facultatif (nom d'un fichier de assets/img, sans .jpg).",
+  "_exemple": {
+    "date": "2026-01-15",
+    "nom": {
+      "fr": "Nom du plat",
+      "en": "Dish name"
+    },
+    "prix": 16,
+    "photo": ""
+  },
+  "plats": []
+}
