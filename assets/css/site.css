@@ -1,7 +1,7 @@
 /* Rouge et Roche — v2 « Le magazine »
    Une photo plein écran par écran, des titres immenses, une interface presque invisible.
    Deux couleurs : l'encre et le papier. Deux caractères : Gambarino (titres), Switzer (texte). */
-:root{--ink:#0E0C0A;--paper:#F4EFE7;--rouge:#8E2F1F;--g:clamp(16px,2.6vw,44px);--d:'Gambarino',Georgia,serif;--t:'Switzer',system-ui,sans-serif;--rule:rgba(14,12,10,.18)}
+:root{--ink:#0E0C0A;--paper:#F4EFE7;--rouge:#A8412B;--g:clamp(16px,2.6vw,44px);--d:'Gambarino',Georgia,serif;--t:'Switzer',system-ui,sans-serif;--rule:rgba(14,12,10,.18)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{background:var(--ink);overflow-x:clip;-webkit-text-size-adjust:100%}
 body{font-family:var(--t);color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased;font-size:16px;line-height:1.45}
@@ -279,7 +279,7 @@ form.dem{display:grid;grid-template-columns:1fr;gap:26px 30px}
 /* ── signature : le poisson du logo au trait et le nom en caractères de titre, posés directement sur l'image, sans fond.
       Rouge du logo sur les fonds clairs (papier, ciel clair), couleur papier sur les photos : core.js regarde ce qu'il y a dessous. ── */
 .marque{position:fixed;z-index:51;left:var(--g);top:calc(11px + env(safe-area-inset-top));display:flex;align-items:center;gap:10px;color:var(--paper);filter:drop-shadow(0 1px 10px rgba(14,12,10,.45));transition:color .35s ease}
-.marque.clair{color:#8E2F1F;filter:none}
+.marque.clair{color:var(--rouge);filter:none}
 .marque .psn{display:block;width:44px;aspect-ratio:280/120;background:currentColor;-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center}
 .marque b{font:400 21px/1 var(--d);letter-spacing:-.01em;white-space:nowrap}
 .marque b i{font-style:italic}
@@ -365,3 +365,12 @@ html.calme .ui{transition:none}
 /* menu clair : un halo sombre le garde lisible si un coin de photo est plus clair que prévu ; aucun halo quand il est en encre */
 .ui{text-shadow:0 1px 10px rgba(14,12,10,.65),0 0 2px rgba(14,12,10,.35)}
 html.haut-clair .ui.top,html.bas-clair .ui.bot{text-shadow:none}
+
+/* ── un seul rouge, le brique de « La roche » (--rouge), avec un rôle précis :
+      blocs pleins (pied de page, sommaire, formulaire, « Venir »), boutons, signature sur fond clair, et petits accents.
+      Jamais sur les titres ni sur les textes posés sur une photo. ── */
+html.haut-clair .rubs a[aria-current]{color:var(--rouge);border-color:var(--rouge)}
+.det .go:hover,.prose .go:hover,.infos .go:hover,.pied a:hover{color:var(--rouge)}
+.infos dd a:hover{color:var(--rouge);border-color:var(--rouge)}
+.tabs button[aria-selected=true],.filt button[aria-pressed=true]{border-color:var(--rouge)}
+
