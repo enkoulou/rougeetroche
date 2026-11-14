@@ -1,6 +1,2 @@
 User-agent: *
-Allow: /
-Disallow: /directions/
-Disallow: /outils/
-Disallow: /admin/
-Sitemap: https://www.rougeetroche-marseille.fr/sitemap.xml
+Disallow: /
