@@ -43,7 +43,7 @@
           },
           "plats": [
             {
-              "fr": "Foie gras de canard maison, chutney de figues et pain d'épices toasté",
+              "fr": "Foie gras de canard, chutney de figues et pain d'épices toasté",
               "en": "House duck foie gras, fig chutney and toasted gingerbread"
             },
             {
@@ -96,8 +96,8 @@
         "en": "Afterwork"
       },
       "resume": {
-        "fr": "Planche de charcuterie et fromage, croque-monsieur maison.",
-        "en": "Charcuterie and cheese board, homemade croque-monsieur."
+        "fr": "Planche de charcuterie et fromage, croque-monsieur.",
+        "en": "Charcuterie and cheese board, croque-monsieur."
       },
       "photo": "j059",
       "actif": true,

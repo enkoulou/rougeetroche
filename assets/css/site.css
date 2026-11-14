@@ -341,3 +341,14 @@ html.calme body::before,html.calme .marque{transition:none}
 .map[data-src]:not(.on){display:grid;place-items:center;text-align:center;height:auto;padding:70px var(--g)}
 .map[data-src] .cta{margin:20px 0 16px;cursor:pointer}
 .map .mini{font-size:13px;max-width:44ch;margin:0 auto;opacity:.75}
+
+/* ── textes de présentation (page « La maison », accueil, groupes) et questions fréquentes ── */
+.prose .side p+p{margin-top:16px}
+.prose .side p{font-size:17px;line-height:1.55}
+.prose .go{margin-top:6px}
+.prose+.prose{padding-top:10px}
+.prose.pres{padding-top:80px}
+.faq{padding-top:70px}
+.faq dt{font:500 17px/1.4 var(--t);opacity:1}
+.faq dd{font:400 17px/1.5 var(--t);letter-spacing:0;opacity:.78;max-width:52ch}
+@media (min-width:900px){.faq dl div{grid-template-columns:1fr 1fr;gap:30px}}

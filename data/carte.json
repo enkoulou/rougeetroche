@@ -33,7 +33,7 @@
             },
             {
               "nom": {
-                "fr": "Panisses dorées, rouille maison",
+                "fr": "Panisses dorées, rouille",
                 "en": "Golden panisses (chickpea fries), house rouille"
               },
               "prix": 12
@@ -148,7 +148,7 @@
             },
             {
               "nom": {
-                "fr": "Entrecôte de bœuf grillée, frites maison et sauce Rouge et Roche",
+                "fr": "Entrecôte de bœuf grillée, frites et sauce Rouge et Roche",
                 "en": "Grilled rib-eye steak, house fries and Rouge et Roche sauce"
               },
               "prix": 35
@@ -182,35 +182,35 @@
           "plats": [
             {
               "nom": {
-                "fr": "Royal Chocolat maison",
+                "fr": "Royal Chocolat",
                 "en": "House Royal chocolate cake"
               },
               "prix": 11
             },
             {
               "nom": {
-                "fr": "Île flottante maison",
+                "fr": "Île flottante",
                 "en": "House floating island"
               },
               "prix": 9
             },
             {
               "nom": {
-                "fr": "Tiramisu maison",
+                "fr": "Tiramisu",
                 "en": "House tiramisu"
               },
               "prix": 9
             },
             {
               "nom": {
-                "fr": "Pavlova maison",
+                "fr": "Pavlova",
                 "en": "House pavlova"
               },
               "prix": 9
             },
             {
               "nom": {
-                "fr": "Tarte tatin maison",
+                "fr": "Tarte tatin",
                 "en": "House tarte tatin"
               },
               "prix": 9
