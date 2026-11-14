@@ -124,7 +124,7 @@
     /* ── page Carte ── */
     const menu = $('#menu'), tabs = $('#tabs');
     if (menu && carte) {
-      const VUES = { carte: { 0: ['o093-l', en ? 'Sole meunière' : 'Sole meunière', '60% 40%'], 2: ['o082-l', en ? 'Rock fish soup' : 'Soupe de poissons de roche', '50% 55%'], 4: ['o123-l', 'Tarte tatin', '50% 50%'] }, boissons: { 0: ['j065-l', 'Basilic Smash', '50% 45%'] }, vins: {} };
+      const VUES = { carte: { 0: ['o092-l', 'Sole meunière', '50% 45%'], 2: ['o082-l', en ? 'Rock fish soup' : 'Soupe de poissons de roche', '50% 55%'], 4: ['o123-l', 'Tarte tatin', '50% 50%'] }, boissons: { 0: ['j065-l', 'Basilic Smash', '50% 45%'], 3: ['j123-l', en ? 'Draught beer' : 'Bière à la pression', '50% 40%'] }, vins: { 0: ['j117-l', en ? 'The cellar' : 'La cave', '50% 35%'] } };
       tabs.innerHTML = carte.cartes.map((c, i) => `<button class="u" role="tab" aria-selected="${!i}" data-id="${c.id}">${esc(L(c.titre))}</button>`).join('');
       const voir = id => {
         const c = carte.cartes.find(x => x.id === id) || carte.cartes[0];
