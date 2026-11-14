@@ -44,7 +44,7 @@ img{display:block}
 .pg{position:relative;height:100svh;min-height:540px;overflow:hidden;background:var(--ink);color:var(--paper)}
 .stack .pg{position:sticky;top:0}
 .pg .ph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:var(--pos,50% 50%);will-change:transform}
-.pg::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(to bottom,rgba(14,12,10,.55),rgba(14,12,10,0) 17%,rgba(14,12,10,0) 84%,rgba(14,12,10,.42)),rgba(14,12,10,var(--v,.2))}
+.pg::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(to bottom,rgba(14,12,10,.7),rgba(14,12,10,0) 16%,rgba(14,12,10,0) 84%,rgba(14,12,10,.42)),rgba(14,12,10,var(--v,.2))}
 .pg.ink{color:var(--ink)}
 .pg.ink::after{background:none}
 .tx{position:absolute;z-index:2;padding:0 var(--g)}
@@ -276,14 +276,11 @@ form.dem{display:grid;grid-template-columns:1fr;gap:26px 30px}
 .pg:not(.ink) .tx:not(.bloc) p,.pg:not(.ink) .tx:not(.bloc) .u,.pg:not(.ink) .issue{text-shadow:0 1px 14px rgba(14,12,10,.55)}
 .vue span{mix-blend-mode:normal;color:var(--paper);text-shadow:0 1px 12px rgba(14,12,10,.8)}
 
-/* ── signature : une étiquette papier avec le poisson du logo, lisible sur toutes les photos ── */
-.marque{position:fixed;z-index:51;left:var(--g);top:calc(10px + env(safe-area-inset-top));display:flex;align-items:center;gap:10px;background:var(--paper);color:var(--ink);padding:7px 14px 7px 10px;box-shadow:0 1px 0 rgba(14,12,10,.12),0 10px 30px -12px rgba(14,12,10,.45)}
-.marque img{width:46px;height:auto}
-.marque span{display:flex;flex-direction:column;line-height:1}
-.marque b{font:400 19px/1 var(--d);letter-spacing:-.01em;white-space:nowrap}
-.marque b i{color:#8E2F1F}
-.marque small{font:500 8px/1 var(--t);letter-spacing:.2em;text-transform:uppercase;margin-top:5px;color:#8E2F1F;white-space:nowrap}
-.ui.top{justify-content:flex-end;top:calc(20px + env(safe-area-inset-top))}
-@media (min-width:900px){.marque{padding:9px 18px 9px 12px;gap:12px}.marque img{width:58px}.marque b{font-size:23px}.marque small{font-size:9px}}
-@media (max-width:480px){.marque{gap:7px;padding:6px 10px 6px 8px}.marque img{width:32px}.marque b{font-size:16px}.marque small{font-size:6.5px;letter-spacing:.16em;margin-top:4px}.ui.top nav{gap:14px}}
-@media print{.marque{position:static}}
+/* ── signature : le poisson du logo au trait et le nom en caractères de titre, posés directement sur l'image, sans fond.
+      Dans la même couche que le menu : clair sur les photos, sombre sur le papier. ── */
+.marque{display:flex;align-items:center;gap:10px;text-transform:none;letter-spacing:0}
+.marque img{width:44px;height:auto}
+.marque b{font:400 21px/1 var(--d);letter-spacing:-.01em;white-space:nowrap}
+.marque b i{font-style:italic}
+@media (min-width:900px){.marque{gap:12px}.marque img{width:56px}.marque b{font-size:26px}}
+@media (max-width:480px){.marque{gap:8px}.marque img{width:36px}.marque b{font-size:18px}.ui.top nav{gap:14px}}
