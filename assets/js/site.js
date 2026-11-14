@@ -24,6 +24,11 @@
     addEventListener('keydown', e => { if (e.key === 'Escape') set(false); });
   }
 
+  /* ── plan Google : chargé seulement quand le visiteur le demande (Google peut déposer des cookies) ── */
+  $$('.map[data-src]').forEach(m => { const b = $('button', m); if (b) b.addEventListener('click', () => {
+    m.innerHTML = '<iframe title="' + esc(m.dataset.title) + '" referrerpolicy="no-referrer-when-downgrade" src="' + esc(m.dataset.src) + '"></iframe>'; m.classList.add('on');
+  }); });
+
   /* ── numéro et mois (couverture) ── */
   const d = new Date();
   $$('[data-num]').forEach(e => e.textContent = String(d.getMonth() + 1).padStart(2, '0'));

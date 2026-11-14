@@ -55,8 +55,9 @@
   let saison = root.dataset.saison === 'ete' ? 'ete' : 'hiver';   // déjà calculée par le script en tête de page
   appliquer(saison);   // les photos de saison partent tout de suite, sans attendre les fichiers de données
 
-  /* ── file d'attente des photos : la première photo d'abord, puis les suivantes dans l'ordre de la page,
-        deux à la fois ; une photo qui approche de l'écran passe devant ── */
+  /* ── photos : la première part tout de suite ; les autres seulement quand elles approchent de l'écran
+        (un écran et demi d'avance). En attendant, l'aperçu flou écrit dans la page tient la place.
+        Avant : toute la page se chargeait en chaîne, soit plus de 6 Mo dès l'accueil. ── */
   const lancer = el => {
     if (el.dataset.q === 'ok') return;
     el.dataset.q = 'ok';
@@ -67,20 +68,10 @@
   };
   const file = [...document.querySelectorAll('img[data-q]')];
   if ('IntersectionObserver' in window) {
-    const io = new IntersectionObserver(es => es.forEach(x => { if (x.isIntersecting) { lancer(x.target); io.unobserve(x.target); } }), { rootMargin: '120% 0px' });
+    const io = new IntersectionObserver(es => es.forEach(x => { if (x.isIntersecting) { lancer(x.target); io.unobserve(x.target); } }), { rootMargin: '150% 0px' });
     file.forEach(el => io.observe(el));
-  }
-  let fileLancee = false;
-  const suite = () => {
-    const el = file.find(x => x.dataset.q !== 'ok');
-    if (!el) return;
-    lancer(el);
-    if (el.complete) suite(); else { el.addEventListener('load', suite, { once: true }); el.addEventListener('error', suite, { once: true }); }
-  };
-  const demarrer = () => { if (fileLancee) return; fileLancee = true; suite(); suite(); };
+  } else file.forEach(lancer);
   const tete = document.querySelector('img[fetchpriority="high"]');
-  if (!tete || (tete.complete && tete.naturalWidth)) setTimeout(demarrer, 0);
-  else { tete.addEventListener('load', demarrer, { once: true }); tete.addEventListener('error', demarrer, { once: true }); setTimeout(demarrer, 2500); }
   document.addEventListener('click', e => {
     const b = e.target.closest('[data-bascule]');
     if (!b) return;
@@ -105,12 +96,34 @@
   const cfgEl = document.createElement('div');
   cfgEl.className = 'zc-widget-config'; cfgEl.dataset.restaurant = zcId; cfgEl.dataset.lang = lang;
   document.body.appendChild(cfgEl);
-  const sdk = document.createElement('script');
-  sdk.id = 'zenchef-sdk'; sdk.async = true; sdk.src = 'https://sdk.zenchef.com/v1/sdk.min.js';
-  document.body.appendChild(sdk);
+  // Le module Zenchef (service tiers) n'est chargé que lorsque le visiteur vise un bouton « Réserver » :
+  // aucune connexion à Zenchef tant qu'il ne veut pas réserver.
+  const zcPret = () => document.querySelector('iframe[class*="ZC_sdk"]');
+  let zcCharge = false;
+  const chargerZenchef = () => {
+    if (zcCharge) return; zcCharge = true;
+    const sdk = document.createElement('script');
+    sdk.id = 'zenchef-sdk'; sdk.async = true; sdk.src = 'https://sdk.zenchef.com/v1/sdk.min.js';
+    document.body.appendChild(sdk);
+  };
+  ['pointerenter', 'touchstart', 'focusin'].forEach(ev => document.addEventListener(ev, e => { if (e.target.closest && e.target.closest('[data-zc-action]')) chargerZenchef(); }, { capture: true, passive: true }));
   document.addEventListener('click', e => {
     const a = e.target.closest('[data-zc-action]');
-    if (a && document.querySelector('iframe[class*="ZC_sdk"]')) e.preventDefault();   // sinon : lien de secours vers Zenchef
+    if (!a) return;
+    if (zcPret()) { e.preventDefault(); return; }          // le module est là : il s'ouvre dans la page
+    if (a.dataset.zcAttente) return;                        // second passage après l'attente : lien de secours vers Zenchef
+    e.preventDefault(); e.stopPropagation();
+    chargerZenchef();
+    let n = 0;
+    const essai = setInterval(() => {                       // on attend le module (4 s au plus), puis on rejoue le clic
+      if (zcPret()) {   // le module est arrivé : on rejoue le clic jusqu'à ce que le panneau s'ouvre vraiment (5 essais)
+        clearInterval(essai);
+        let k = 0;
+        const ouvrir = () => { const f = zcPret(); if (!f || !/zc-width-numeral/.test(f.className) || k++ > 5) return; a.click(); setTimeout(ouvrir, 450); };
+        setTimeout(ouvrir, 200);
+      }
+      else if (++n > 26) { clearInterval(essai); a.dataset.zcAttente = '1'; location.href = a.href; }
+    }, 150);
   });
 
   /* ── défilement : celui du navigateur, sans lissage.
@@ -167,26 +180,19 @@
     teinte();
   }
 
-  /* ── pages suivantes : une fois cette page affichée et au repos, on met de côté les autres pages
-        et leur première photo. Le passage d'une page à l'autre se fait alors sans attente. ── */
-  const cfgP = (window.RRcfg && RRcfg.pages) || [], cx = navigator.connection;
-  const avance = () => {
+  /* ── page suivante : préparée seulement quand le visiteur vise son lien (survol, doigt posé, tabulation).
+        Avant : les cinq autres pages et leur grande photo étaient chargées d'office. ── */
+  const cfgP = (window.RRcfg && RRcfg.pages) || [], cx = navigator.connection, dejaVu = new Set();
+  const viser = e => {
+    const a = e.target.closest && e.target.closest('a[href]'); if (!a) return;
+    const p = cfgP.find(x => a.getAttribute('href').split('#')[0] === x[0]); if (!p || dejaVu.has(p[0])) return;
     if (cx && (cx.saveData || /2g/.test(cx.effectiveType || ''))) return;   // on respecte les forfaits serrés
-    let i = 0;
-    const un = () => {
-      const p = cfgP[i++]; if (!p) return;
-      fetch(p[0], { credentials: 'same-origin', priority: 'low' }).catch(() => {});
-      const n = p[saison === 'hiver' ? 1 : 2], m = n.slice(0, -2), dir = base + 'assets/img/', im = new Image();
-      im.onload = im.onerror = un; im.fetchPriority = 'low';
-      im.sizes = '100vw'; im.srcset = dir + m + '.jpg 1000w, ' + dir + m + '-m.jpg 1400w, ' + dir + n + '.jpg 2000w'; im.src = dir + m + '.jpg';
-    };
-    un();
+    dejaVu.add(p[0]);
+    fetch(p[0], { credentials: 'same-origin', priority: 'low' }).catch(() => {});
+    const n = p[saison === 'hiver' ? 1 : 2], m = n.slice(0, -2), dir = base + 'assets/img/', im = new Image();
+    im.sizes = '100vw'; im.srcset = dir + m + '.jpg 1000w, ' + dir + m + '-m.jpg 1400w, ' + dir + n + '.jpg 2000w'; im.src = dir + m + '.jpg';
   };
-  // départ : une seconde après l'arrivée de la première photo, sans attendre le reste de la page ; en basse priorité
-  let avanceFaite = false;
-  const repos = () => { if (avanceFaite) return; avanceFaite = true; setTimeout(avance, 1000); };
-  if (!tete || (tete.complete && tete.naturalWidth)) repos();
-  else { tete.addEventListener('load', repos, { once: true }); setTimeout(repos, 4000); }
+  ['pointerenter', 'touchstart', 'focusin'].forEach(ev => document.addEventListener(ev, viser, { capture: true, passive: true }));
 
   window.RR = { ready, euro, lang, base, reduce, anime: !reduce && !!window.gsap && !!window.ScrollTrigger, lenis, get saison() { return saison; } };
 })();

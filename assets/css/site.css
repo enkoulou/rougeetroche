@@ -321,3 +321,23 @@ html.calme body::before,html.calme .marque{transition:none}
 .avis{margin-top:16px;max-width:none!important}
 .avis a{border-bottom:1px solid currentColor;padding-bottom:2px}
 .fin .avis{margin-top:30px}
+
+
+/* ── lisibilité et doigts : petites capitales à 12 px, zones tactiles d'au moins 44 px ── */
+.u{font-size:12px;letter-spacing:.14em}
+.marque{padding:10px 0;top:calc(1px + env(safe-area-inset-top))}
+.ui.top{top:calc(4px + env(safe-area-inset-top))}
+.ui.top nav>a,.ui.top nav>button,.rubs a,.ui.bot button{min-height:44px;display:inline-flex;align-items:center}
+.ui .res{border-bottom:0;padding-bottom:0;text-decoration:underline;text-underline-offset:5px}
+.ui.bot [data-bascule]{border-bottom:0;text-decoration:underline;text-underline-offset:5px}
+.ui.bot{bottom:calc(2px + env(safe-area-inset-bottom))}
+.avis a{display:inline-flex;align-items:center;min-height:44px;border-bottom:0;padding-bottom:0;text-decoration:underline;text-underline-offset:5px}
+.avis{margin-top:4px}
+.go{padding:14px 0 6px;margin-top:10px}
+.now a{padding:14px 14px 13px}
+.col a{display:inline-flex;align-items:center;min-height:44px}
+.tabs button,.filt button{min-height:44px}
+/* plan Google à la demande */
+.map[data-src]:not(.on){display:grid;place-items:center;text-align:center;height:auto;padding:70px var(--g)}
+.map[data-src] .cta{margin:20px 0 16px;cursor:pointer}
+.map .mini{font-size:13px;max-width:44ch;margin:0 auto;opacity:.75}
