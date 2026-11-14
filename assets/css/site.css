@@ -286,3 +286,13 @@ form.dem{display:grid;grid-template-columns:1fr;gap:26px 30px}
 .ui.top{justify-content:flex-end}
 @media (min-width:900px){.marque{gap:12px;top:calc(9px + env(safe-area-inset-top))}.marque .psn{width:56px}.marque b{font-size:26px}}
 @media (max-width:480px){.marque{gap:8px;top:calc(12px + env(safe-area-inset-top))}.marque .psn{width:36px}.marque b{font-size:18px}.ui.top nav{gap:14px}}
+
+/* ── rubriques visibles en haut sur ordinateur ; sur téléphone, le bouton « Sommaire » ── */
+.rubs{display:none}
+@media (min-width:900px){
+  .rubs{display:flex;gap:24px;align-items:center}
+  .rubs a{padding-bottom:2px;border-bottom:1px solid transparent}
+  .rubs a:hover,.rubs a[aria-current]{border-color:currentColor}
+  .ui [data-somm]{display:none}
+}
+@media (min-width:900px) and (max-width:1080px){.rubs{gap:14px}.ui nav{gap:14px}.rubs a,.ui nav .res{letter-spacing:.1em}}
