@@ -289,13 +289,13 @@ form.dem{display:grid;grid-template-columns:1fr;gap:26px 30px}
 
 /* ── rubriques visibles en haut sur ordinateur ; sur téléphone, le bouton « Sommaire » ── */
 .rubs{display:none}
-@media (min-width:900px){
+@media (min-width:1120px){   /* en dessous, le libellé « Groupes & privatisation » ne tient plus à côté de la signature : bouton « Sommaire » */
   .rubs{display:flex;gap:24px;align-items:center}
   .rubs a{padding-bottom:2px;border-bottom:1px solid transparent}
   .rubs a:hover,.rubs a[aria-current]{border-color:currentColor}
-  .ui [data-somm]{display:none}
+  .ui.top nav>[data-somm]{display:none}   /* plus précis que la règle des zones tactiles, qui le réaffichait */
 }
-@media (min-width:900px) and (max-width:1080px){.rubs{gap:14px}.ui nav{gap:14px}.rubs a,.ui nav .res{letter-spacing:.1em}}
+@media (min-width:1120px) and (max-width:1260px){.rubs{gap:14px}.ui nav{gap:14px}.rubs a,.ui nav .res{letter-spacing:.1em}}
 /* le titre d'ouverture attend que son animation soit prête (classe « pret » posée par les scripts) : pas de sursaut */
 html.anime:not(.pret) .cov .tx,html.anime:not(.pret) .stack .pg:first-child .tx,html.anime:not(.pret) .issue{visibility:hidden}
 
