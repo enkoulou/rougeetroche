@@ -40,7 +40,10 @@
       // la photo du haut va jusqu'à 2000 px ; les autres s'arrêtent à 1400 px (trois fois plus légères)
       const ss = big ? src + ' 1000w, ' + dir + n.slice(0, -2) + '-m.jpg 1400w' + (file ? '' : ', ' + dir + n + '.jpg 2000w') : '';
       if (big) el.sizes = el.dataset.sizes || '100vw';
-      if (file && el.dataset.q !== 'ok') { el.dataset.src = src; if (ss) el.dataset.srcset = ss; }   // pas encore son tour
+      if (file && el.dataset.q !== 'ok') {   // pas encore son tour : l'aperçu flou tient la place
+        el.dataset.src = src; if (ss) el.dataset.srcset = ss;
+        const ap = el.dataset[s === 'hiver' ? 'lh' : 'le']; if (ap && el.getAttribute('src') !== ap) el.src = ap;
+      }
       else { if (ss && el.getAttribute('srcset') !== ss) el.srcset = ss; if (el.getAttribute('src') !== src) el.src = src; }
       const alt = el.dataset[s === 'hiver' ? 'altH' : 'altE']; if (alt !== undefined) el.alt = alt;
     });
@@ -127,6 +130,24 @@
     if (carte) carte.cartes[0].sections.forEach(s => s.plats.forEach(p => { if (p.vedette) vedettes.push({ nom: p.nom[lang], prix: p.prix, photo: p.photo, rubrique: s.titre[lang] }); }));
     return { saison, pdj: platDuJour(pd), carte, vedettes, offres, today };
   });
+
+  /* ── pages suivantes : une fois cette page affichée et au repos, on met de côté les autres pages
+        et leur première photo. Le passage d'une page à l'autre se fait alors sans attente. ── */
+  const cfgP = (window.RRcfg && RRcfg.pages) || [], cx = navigator.connection;
+  const avance = () => {
+    if (cx && (cx.saveData || /2g/.test(cx.effectiveType || ''))) return;   // on respecte les forfaits serrés
+    let i = 0;
+    const un = () => {
+      const p = cfgP[i++]; if (!p) return;
+      fetch(p[0], { credentials: 'same-origin' }).catch(() => {});
+      const n = p[saison === 'hiver' ? 1 : 2], m = n.slice(0, -2), dir = base + 'assets/img/', im = new Image();
+      im.onload = im.onerror = un;
+      im.sizes = '100vw'; im.srcset = dir + m + '.jpg 1000w, ' + dir + m + '-m.jpg 1400w, ' + dir + n + '.jpg 2000w'; im.src = dir + m + '.jpg';
+    };
+    un();
+  };
+  const repos = () => (window.requestIdleCallback ? requestIdleCallback(avance, { timeout: 4000 }) : setTimeout(avance, 1500));
+  if (document.readyState === 'complete') repos(); else addEventListener('load', repos);
 
   window.RR = { ready, euro, lang, base, reduce, anime: !reduce && !!window.gsap && !!window.ScrollTrigger, lenis, get saison() { return saison; } };
 })();

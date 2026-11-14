@@ -259,6 +259,8 @@ form.dem{display:grid;grid-template-columns:1fr;gap:26px 30px}
 
 /* une offre désactivée disparaît partout */
 [hidden]{display:none!important}
-/* photos en file d'attente : fondu à l'arrivée plutôt qu'une apparition brutale */
-img[data-q]{opacity:0;transition:opacity .7s ease}
-img[data-q].vu{opacity:1}
+/* photos en file d'attente : un aperçu flou (vignette écrite dans la page) tient la place en attendant la photo */
+.pg .ph{background-size:cover;background-position:var(--pos,50% 50%);background-repeat:no-repeat}
+@media (min-width:900px){.pg .ph{background-position:var(--posd,var(--pos,50% 50%))}}
+[data-saison="hiver"] .ph[data-h]{background-image:var(--lh)}
+[data-saison="ete"] .ph[data-h]{background-image:var(--le)}
