@@ -13,7 +13,10 @@
   const lang = root.lang === 'en' ? 'en' : 'fr';
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches || /[?&]calme=/.test(location.search);   // ?calme=1 : pour tester sans animations
   const qs = new URLSearchParams(location.search);
-  const get = f => fetch(base + 'data/' + f, { cache: 'no-cache' }).then(r => r.json()).catch(() => null);
+  // en ligne : le cache normal du navigateur (les données reviennent tout de suite d'une page à l'autre, rafraîchies au plus tard toutes les 10 min) ;
+  // sur cet ordinateur : toujours la dernière version, pour voir aussitôt ce que l'administration vient d'enregistrer
+  const local = /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname);
+  const get = f => fetch(base + 'data/' + f, local ? { cache: 'no-cache' } : {}).then(r => r.json()).catch(() => null);
   const euro = n => lang === 'en' ? '€' + (Number.isInteger(n) ? n : n.toFixed(2)) : (Number.isInteger(n) ? n : n.toFixed(2).replace('.', ',')) + ' €';
   const today = (() => { const d = new Date(); return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); })();
 
