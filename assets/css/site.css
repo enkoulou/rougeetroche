@@ -277,10 +277,12 @@ form.dem{display:grid;grid-template-columns:1fr;gap:26px 30px}
 .vue span{mix-blend-mode:normal;color:var(--paper);text-shadow:0 1px 12px rgba(14,12,10,.8)}
 
 /* ── signature : le poisson du logo au trait et le nom en caractères de titre, posés directement sur l'image, sans fond.
-      Dans la même couche que le menu : clair sur les photos, sombre sur le papier. ── */
-.marque{display:flex;align-items:center;gap:10px;text-transform:none;letter-spacing:0}
-.marque img{width:44px;height:auto}
+      Rouge du logo sur les fonds clairs (papier, ciel clair), couleur papier sur les photos : core.js regarde ce qu'il y a dessous. ── */
+.marque{position:fixed;z-index:51;left:var(--g);top:calc(11px + env(safe-area-inset-top));display:flex;align-items:center;gap:10px;color:var(--paper);filter:drop-shadow(0 1px 10px rgba(14,12,10,.45));transition:color .35s ease}
+.marque.clair{color:#8E2F1F;filter:none}
+.marque .psn{display:block;width:44px;aspect-ratio:280/120;background:currentColor;-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center}
 .marque b{font:400 21px/1 var(--d);letter-spacing:-.01em;white-space:nowrap}
 .marque b i{font-style:italic}
-@media (min-width:900px){.marque{gap:12px}.marque img{width:56px}.marque b{font-size:26px}}
-@media (max-width:480px){.marque{gap:8px}.marque img{width:36px}.marque b{font-size:18px}.ui.top nav{gap:14px}}
+.ui.top{justify-content:flex-end}
+@media (min-width:900px){.marque{gap:12px;top:calc(9px + env(safe-area-inset-top))}.marque .psn{width:56px}.marque b{font-size:26px}}
+@media (max-width:480px){.marque{gap:8px;top:calc(12px + env(safe-area-inset-top))}.marque .psn{width:36px}.marque b{font-size:18px}.ui.top nav{gap:14px}}

@@ -131,6 +131,23 @@
     return { saison, pdj: platDuJour(pd), carte, vedettes, offres, today };
   });
 
+  /* ── signature : rouge sur fond clair (papier, écran à texte sombre), couleur papier sur une photo ou sur le sommaire ── */
+  const marque = document.querySelector('.marque');
+  if (marque) {
+    let vu = false;
+    const teinte = () => {
+      vu = false;
+      const r = marque.getBoundingClientRect();
+      const dessous = document.elementsFromPoint(r.left + r.width / 2, r.top + r.height / 2).find(el => !el.closest('.marque, .ui'));
+      const z = dessous && dessous.closest('.pg, .somm, .lb');
+      marque.classList.toggle('clair', !z || (z.classList.contains('pg') && z.classList.contains('ink')));
+    };
+    const plusTard = () => { if (!vu) { vu = true; setTimeout(teinte, 60); } };
+    addEventListener('scroll', plusTard, { passive: true }); addEventListener('resize', plusTard);
+    document.addEventListener('click', () => setTimeout(teinte, 60)); document.addEventListener('transitionend', plusTard);
+    teinte();
+  }
+
   /* ── pages suivantes : une fois cette page affichée et au repos, on met de côté les autres pages
         et leur première photo. Le passage d'une page à l'autre se fait alors sans attente. ── */
   const cfgP = (window.RRcfg && RRcfg.pages) || [], cx = navigator.connection;
