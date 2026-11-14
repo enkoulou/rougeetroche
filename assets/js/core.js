@@ -110,17 +110,15 @@
     if (a && document.querySelector('iframe[class*="ZC_sdk"]')) e.preventDefault();   // sinon : lien de secours vers Zenchef
   });
 
-  /* ── défilement fluide ── */
-  let lenis = null;
-  if (!reduce && window.gsap && window.Lenis && window.ScrollTrigger) {
+  /* ── défilement : celui du navigateur, sans lissage.
+        Le lissage (Lenis) a été retiré : mesuré, il retardait la page de 0,45 s à 0,9 s après chaque geste. ── */
+  const lenis = null;
+  if (!reduce && window.gsap && window.ScrollTrigger) {
     gsap.registerPlugin(ScrollTrigger);
-    lenis = new Lenis({ lerp: 0.085 });
-    lenis.on('scroll', ScrollTrigger.update);
-    gsap.ticker.add(t => lenis.raf(t * 1000));
-    gsap.ticker.lagSmoothing(0);
     addEventListener('load', () => ScrollTrigger.refresh());
   }
   root.classList.add(reduce ? 'calme' : 'anime');
+  setTimeout(() => root.classList.add('pret'), 1500);   // filet : le titre ne reste jamais masqué si un script échoue
 
   const ready = Promise.all([get('saisons.json'), get('plat-du-jour.json'), get('carte.json'), get('offres.json')]).then(([sc, pd, carte, offres]) => {
     let force = qs.get('saison'); try { force = force || sessionStorage.getItem('rr-saison'); } catch (_) {}

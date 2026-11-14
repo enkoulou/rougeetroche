@@ -38,7 +38,7 @@
       const all = b.dataset.f === 'all';
       gal.classList.toggle('flat', !all);
       items.forEach(it => it.classList.toggle('hide', !all && it.dataset.c !== b.dataset.f));
-      if (RR.anime) { gsap.fromTo(items.filter(i => !i.classList.contains('hide')), { clipPath: 'inset(100% 0 0 0)' }, { clipPath: 'inset(0% 0 0 0)', duration: 1, ease: 'power3.inOut', stagger: 0.04 }); ScrollTrigger.refresh(); }
+      if (RR.anime) { gsap.fromTo(items.filter(i => !i.classList.contains('hide')), { clipPath: 'inset(100% 0 0 0)' }, { clipPath: 'inset(0% 0 0 0)', duration: 0.5, ease: 'power3.out', stagger: 0.02 }); ScrollTrigger.refresh(); }
     }));
     let cur = 0;
     const vis = () => items.filter(i => !i.classList.contains('hide'));
@@ -136,8 +136,8 @@
         if (!RR.anime) return;
         ScrollTrigger.getAll().filter(s => s.vars.id === 'rub').forEach(s => s.kill());
         $$('.rub', menu).forEach(r => {
-          gsap.from($('.m>span', r), { yPercent: 115, duration: 1.4, ease: 'expo.out', scrollTrigger: { id: 'rub', trigger: r, start: 'top 82%' } });
-          const l = $$('.li', r); if (l.length) gsap.from(l, { clipPath: 'inset(0 100% 0 0)', duration: 1.1, ease: 'power3.inOut', stagger: 0.06, scrollTrigger: { id: 'rub', trigger: $('.liste', r), start: 'top 88%' } });
+          gsap.from($('.m>span', r), { yPercent: 115, duration: 0.8, ease: 'expo.out', scrollTrigger: { id: 'rub', trigger: r, start: 'top 82%' } });
+          const l = $$('.li', r); if (l.length) gsap.from(l, { clipPath: 'inset(0 100% 0 0)', duration: 0.55, ease: 'power3.out', stagger: 0.025, scrollTrigger: { id: 'rub', trigger: $('.liste', r), start: 'top 88%' } });
         });
         $$('.vue img', menu).forEach(i => gsap.fromTo(i, { yPercent: -6 }, { yPercent: 6, ease: 'none', scrollTrigger: { id: 'rub', trigger: i.parentNode, start: 'top bottom', end: 'bottom top', scrub: true } }));
         ScrollTrigger.refresh();
@@ -155,14 +155,15 @@
     if (fol) $('#tot').textContent = String(pages.length).padStart(2, '0');
     const folio = i => { if (fol) fol.textContent = String(i + 1).padStart(2, '0'); };
     if (!RR.anime) {
+      document.documentElement.classList.add('pret');
       if (fol) addEventListener('scroll', () => folio(Math.min(pages.length - 1, Math.round(scrollY / innerHeight))), { passive: true });
       return;
     }
     const lignes = (root, st, delay) => {
       const l = $$('.m>span', root), small = $$('.tx p:not(.now), .tx .go, .tx dl, .tx .cta, .tx>.u, .issue', root);
       const tl = gsap.timeline({ paused: !!st, defaults: { ease: 'expo.out' }, delay: delay || 0 })
-        .from(l, { yPercent: 115, duration: 1.5, stagger: 0.12 })
-        .from(small, { y: 26, clipPath: 'inset(0 0 100% 0)', duration: 1.1, stagger: 0.08 }, 0.35);
+        .from(l, { yPercent: 115, duration: 0.85, stagger: 0.07 })
+        .from(small, { y: 18, clipPath: 'inset(0 0 100% 0)', duration: 0.6, stagger: 0.04 }, 0.12);
       return tl;
     };
     /* accueil : chaque page recouvre la précédente, la photo se pose lentement */
@@ -172,13 +173,13 @@
       gsap.to(ph, { yPercent: -6, ease: 'none', scrollTrigger: { trigger: pg, start: 'bottom bottom', end: 'bottom top', scrub: true } });
       const tl = lignes(pg, i > 0);
       if (i) ScrollTrigger.create({ trigger: pg, start: 'top 45%', onEnter: () => tl.play(), onLeaveBack: () => tl.reverse() });
-      else gsap.fromTo(ph, { scale: 1.25 }, { scale: 1, duration: 2.6, ease: 'power3.out' });
+      else gsap.fromTo(ph, { scale: 1.12 }, { scale: 1, duration: 1.2, ease: 'power3.out' });
       ScrollTrigger.create({ trigger: pg, start: 'top 50%', end: 'bottom 50%', onToggle: s => { if (s.isActive) folio(i); } });
     });
     /* pages intérieures : couverture, puis écrans isolés */
     $$('.pg:not(.stack .pg)').forEach(pg => {
       const ph = $('.ph', pg), cov = pg.classList.contains('cov');
-      if (cov) { gsap.fromTo(ph, { scale: 1.22 }, { scale: 1, duration: 2.6, ease: 'power3.out' }); lignes(pg, false, 0.15); gsap.to(ph, { yPercent: 10, ease: 'none', scrollTrigger: { trigger: pg, start: 'top top', end: 'bottom top', scrub: true } }); }
+      if (cov) { gsap.fromTo(ph, { scale: 1.12 }, { scale: 1, duration: 1.2, ease: 'power3.out' }); lignes(pg, false, 0); gsap.to(ph, { yPercent: 10, ease: 'none', scrollTrigger: { trigger: pg, start: 'top top', end: 'bottom top', scrub: true } }); }
       else {
         gsap.fromTo(ph, { scale: 1.16, yPercent: -4 }, { scale: 1, yPercent: 4, ease: 'none', scrollTrigger: { trigger: pg, start: 'top bottom', end: 'bottom top', scrub: true } });
         const tl = lignes(pg, true); ScrollTrigger.create({ trigger: pg, start: 'top 55%', onEnter: () => tl.play(), onLeaveBack: () => tl.reverse() });
@@ -186,11 +187,12 @@
     });
     /* blocs sur papier : les titres montent, les listes se déroulent */
     $$('.det, .prose, .nums, .infos, .form, .fin').forEach(b => {
-      const l = $$('.m>span', b); if (l.length) gsap.from(l, { yPercent: 115, duration: 1.4, ease: 'expo.out', stagger: 0.1, scrollTrigger: { trigger: b, start: 'top 80%' } });
+      const l = $$('.m>span', b); if (l.length) gsap.from(l, { yPercent: 115, duration: 0.85, ease: 'expo.out', stagger: 0.06, scrollTrigger: { trigger: b, start: 'top 85%' } });
       const rows = $$('li, dl div, .nums div', b).filter(x => !x.closest('.somm'));
-      if (rows.length) gsap.from(rows, { clipPath: 'inset(0 100% 0 0)', duration: 1.1, ease: 'power3.inOut', stagger: 0.07, scrollTrigger: { trigger: rows[0], start: 'top 88%' } });
+      if (rows.length) gsap.from(rows, { clipPath: 'inset(0 100% 0 0)', duration: 0.6, ease: 'power3.out', stagger: 0.035, scrollTrigger: { trigger: rows[0], start: 'top 88%' } });
     });
-    if (gal) gsap.from($$('button', gal), { clipPath: 'inset(100% 0 0 0)', duration: 1.3, ease: 'power3.inOut', stagger: 0.05, delay: 0.3 });
+    document.documentElement.classList.add('pret');   // les titres d'ouverture peuvent s'afficher : leur animation est en place
+    if (gal) gsap.from($$('button', gal).slice(0, 8), { clipPath: 'inset(100% 0 0 0)', duration: 0.7, ease: 'power3.out', stagger: 0.04 });
     ScrollTrigger.refresh();
   });
 })();
