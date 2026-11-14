@@ -139,15 +139,18 @@
     let i = 0;
     const un = () => {
       const p = cfgP[i++]; if (!p) return;
-      fetch(p[0], { credentials: 'same-origin' }).catch(() => {});
+      fetch(p[0], { credentials: 'same-origin', priority: 'low' }).catch(() => {});
       const n = p[saison === 'hiver' ? 1 : 2], m = n.slice(0, -2), dir = base + 'assets/img/', im = new Image();
-      im.onload = im.onerror = un;
+      im.onload = im.onerror = un; im.fetchPriority = 'low';
       im.sizes = '100vw'; im.srcset = dir + m + '.jpg 1000w, ' + dir + m + '-m.jpg 1400w, ' + dir + n + '.jpg 2000w'; im.src = dir + m + '.jpg';
     };
     un();
   };
-  const repos = () => (window.requestIdleCallback ? requestIdleCallback(avance, { timeout: 4000 }) : setTimeout(avance, 1500));
-  if (document.readyState === 'complete') repos(); else addEventListener('load', repos);
+  // départ : une seconde après l'arrivée de la première photo, sans attendre le reste de la page ; en basse priorité
+  let avanceFaite = false;
+  const repos = () => { if (avanceFaite) return; avanceFaite = true; setTimeout(avance, 1000); };
+  if (!tete || (tete.complete && tete.naturalWidth)) repos();
+  else { tete.addEventListener('load', repos, { once: true }); setTimeout(repos, 4000); }
 
   window.RR = { ready, euro, lang, base, reduce, anime: !reduce && !!window.gsap && !!window.ScrollTrigger, lenis, get saison() { return saison; } };
 })();
