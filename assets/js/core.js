@@ -36,14 +36,45 @@
     // photos du site final : data-h="o001-l" data-e="j013-l" (nom du fichier sans extension ; « -l » = grande taille)
     document.querySelectorAll('img[data-h][data-e]').forEach(el => {
       const n = el.dataset[s === 'hiver' ? 'h' : 'e'], big = n.endsWith('-l'), dir = base + 'assets/img/';
-      const src = dir + (big ? n.slice(0, -2) : n) + '.jpg';
-      if (big) { el.srcset = src + ' 1000w, ' + dir + n.slice(0, -2) + '-m.jpg 1400w, ' + dir + n + '.jpg 2000w'; el.sizes = el.dataset.sizes || '100vw'; }
-      if (el.getAttribute('src') !== src) el.src = src;
+      const src = dir + (big ? n.slice(0, -2) : n) + '.jpg', file = el.hasAttribute('data-q');
+      // la photo du haut va jusqu'à 2000 px ; les autres s'arrêtent à 1400 px (trois fois plus légères)
+      const ss = big ? src + ' 1000w, ' + dir + n.slice(0, -2) + '-m.jpg 1400w' + (file ? '' : ', ' + dir + n + '.jpg 2000w') : '';
+      if (big) el.sizes = el.dataset.sizes || '100vw';
+      if (file && el.dataset.q !== 'ok') { el.dataset.src = src; if (ss) el.dataset.srcset = ss; }   // pas encore son tour
+      else { if (ss && el.getAttribute('srcset') !== ss) el.srcset = ss; if (el.getAttribute('src') !== src) el.src = src; }
       const alt = el.dataset[s === 'hiver' ? 'altH' : 'altE']; if (alt !== undefined) el.alt = alt;
     });
     document.dispatchEvent(new CustomEvent('saison', { detail: s }));
   }
-  let saison = 'hiver';
+  let saison = root.dataset.saison === 'ete' ? 'ete' : 'hiver';   // déjà calculée par le script en tête de page
+  appliquer(saison);   // les photos de saison partent tout de suite, sans attendre les fichiers de données
+
+  /* ── file d'attente des photos : la première photo d'abord, puis les suivantes dans l'ordre de la page,
+        deux à la fois ; une photo qui approche de l'écran passe devant ── */
+  const lancer = el => {
+    if (el.dataset.q === 'ok') return;
+    el.dataset.q = 'ok';
+    el.addEventListener('load', () => el.classList.add('vu'), { once: true });
+    if (el.dataset.srcset) el.srcset = el.dataset.srcset;
+    if (el.dataset.src) el.src = el.dataset.src;
+    if (el.complete && el.naturalWidth) el.classList.add('vu');
+  };
+  const file = [...document.querySelectorAll('img[data-q]')];
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(es => es.forEach(x => { if (x.isIntersecting) { lancer(x.target); io.unobserve(x.target); } }), { rootMargin: '120% 0px' });
+    file.forEach(el => io.observe(el));
+  }
+  let fileLancee = false;
+  const suite = () => {
+    const el = file.find(x => x.dataset.q !== 'ok');
+    if (!el) return;
+    lancer(el);
+    if (el.complete) suite(); else { el.addEventListener('load', suite, { once: true }); el.addEventListener('error', suite, { once: true }); }
+  };
+  const demarrer = () => { if (fileLancee) return; fileLancee = true; suite(); suite(); };
+  const tete = document.querySelector('img[fetchpriority="high"]');
+  if (!tete || (tete.complete && tete.naturalWidth)) setTimeout(demarrer, 0);
+  else { tete.addEventListener('load', demarrer, { once: true }); tete.addEventListener('error', demarrer, { once: true }); setTimeout(demarrer, 2500); }
   document.addEventListener('click', e => {
     const b = e.target.closest('[data-bascule]');
     if (!b) return;

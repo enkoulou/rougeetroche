@@ -259,3 +259,6 @@ form.dem{display:grid;grid-template-columns:1fr;gap:26px 30px}
 
 /* une offre désactivée disparaît partout */
 [hidden]{display:none!important}
+/* photos en file d'attente : fondu à l'arrivée plutôt qu'une apparition brutale */
+img[data-q]{opacity:0;transition:opacity .7s ease}
+img[data-q].vu{opacity:1}

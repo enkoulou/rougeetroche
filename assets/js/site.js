@@ -131,7 +131,7 @@
           return `<section class="rub"><h2><span class="m"><span>${esc(L(s.titre))}</span></span>${s.prixSection ? `<small>${RR.euro(s.prixSection)}</small>` : ''}</h2>
             <div class="corps">${s.aCompleter ? `<p class="todo">${esc(L(s.note))}</p>` : (s.note ? `<p class="note">${esc(L(s.note))}</p>` : '')}
             <div class="liste">${s.plats.map(p => `<div class="li"><span>${esc(L(p.nom))}</span><b>${prix(p.prix)}</b></div>`).join('')}</div></div></section>`
-            + (v ? `<figure class="vue" style="--pos:${v[2]}"><img src="${RR.base}assets/img/${v[0].slice(0, -2)}.jpg" srcset="${RR.base}assets/img/${v[0].slice(0, -2)}.jpg 1000w, ${RR.base}assets/img/${v[0].slice(0, -2)}-m.jpg 1400w, ${RR.base}assets/img/${v[0]}.jpg 2000w" sizes="100vw" alt="${esc(v[1])}" loading="lazy"><span class="u">${esc(v[1])}</span></figure>` : '');
+            + (v ? `<figure class="vue" style="--pos:${v[2]}"><img src="${RR.base}assets/img/${v[0].slice(0, -2)}.jpg" srcset="${RR.base}assets/img/${v[0].slice(0, -2)}.jpg 1000w, ${RR.base}assets/img/${v[0].slice(0, -2)}-m.jpg 1400w" sizes="100vw" alt="${esc(v[1])}" loading="lazy"><span class="u">${esc(v[1])}</span></figure>` : '');
         }).join('');
         if (!RR.anime) return;
         ScrollTrigger.getAll().filter(s => s.vars.id === 'rub').forEach(s => s.kill());

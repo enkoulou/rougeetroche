@@ -23,8 +23,8 @@
 <meta name="geo.placename" content="Marseille">
 <link rel="icon" href="assets/img/poisson.png">
 <link rel="preload" href="assets/fonts/Gambarino-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/fonts/site-fonts.css?v=202611141803">
-<link rel="stylesheet" href="assets/css/site.css?v=202611141803">
+<link rel="stylesheet" href="assets/fonts/site-fonts.css?v=202611141824">
+<link rel="stylesheet" href="assets/css/site.css?v=202611141824">
 <script>(function(){var d=new Date(),m=('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2),a='11-15',b='03-15',f=null,s;try{s=new URLSearchParams(location.search).get('saison')||sessionStorage.getItem('rr-saison')}catch(e){}if(s!=='hiver'&&s!=='ete')s=f||((a<=b?(m>=a&&m<=b):(m>=a||m<=b))?'hiver':'ete');document.documentElement.setAttribute('data-saison',s);var n=s==='hiver'?'o001-l':'j013-l',l=document.createElement('link');l.rel='preload';l.as='image';l.href='assets/img/'+n.slice(0,-2)+'.jpg';l.setAttribute('imagesrcset','assets/img/'+n.slice(0,-2)+'.jpg 1000w, assets/img/'+n.slice(0,-2)+'-m.jpg 1400w, assets/img/'+n+'.jpg 2000w');l.setAttribute('imagesizes','100vw');document.head.appendChild(l)})();</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Restaurant", "@id": "https://www.rougeetroche-marseille.fr/#restaurant", "name": "Rouge et Roche", "url": "https://www.rougeetroche-marseille.fr/", "telephone": "+33 4 91 73 03 14", "image": ["https://www.rougeetroche-marseille.fr/assets/img/o032-l.jpg", "https://www.rougeetroche-marseille.fr/assets/img/o007-l.jpg", "https://www.rougeetroche-marseille.fr/assets/img/o093-l.jpg"], "description": "Restaurant les pieds dans le sable, plage de la Pointe Rouge à Marseille. Ouvert toute l'année, tous les jours de 8 h – 22 h. Cuisine méditerranéenne faite maison, petit-déjeuner, menu de Noël, afterwork.", "address": {"@type": "PostalAddress", "streetAddress": "46 Avenue de Montredon", "postalCode": "13008", "addressLocality": "Marseille", "addressRegion": "Provence-Alpes-Côte d'Azur", "addressCountry": "FR"}, "hasMap": "https://www.google.com/maps?q=Rouge+et+Roche,+46+Avenue+de+Montredon,+13008+Marseille", "servesCuisine": ["Méditerranéenne", "Française"], "priceRange": "€€", "acceptsReservations": "https://bookings.zenchef.com/results?rid=367179", "menu": "https://www.rougeetroche-marseille.fr/carte.html", "openingHoursSpecification": [{"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"], "opens": "08:00", "closes": "22:00"}], "paymentAccepted": "Carte bancaire, espèces, chèques, Chèques-Vacances, titres-restaurant, Apple Pay", "sameAs": ["https://www.instagram.com/rougeetroche/", "https://www.facebook.com/rougeetroche"]}</script>
 
@@ -46,7 +46,7 @@
 <main id="contenu">
 <div class="stack">
 <section class="pg " style="--v:.3">
-  <img class="ph" data-h="o001-l" data-e="j013-l" data-alt-h="La terrasse et la mer vues de la salle" data-alt-e="La terrasse un soir d&#x27;été" alt="" decoding="async">
+  <img class="ph" data-h="o001-l" data-e="j013-l" data-alt-h="La terrasse et la mer vues de la salle" data-alt-e="La terrasse un soir d&#x27;été" alt="" fetchpriority="high" decoding="async">
   <div class="issue u"><span>N° <span data-num>11</span> — <span data-mois></span></span><span>Plage de la Pointe Rouge, Marseille</span></div>
   <div class="tx t-b">
     <h1><span class="m"><span>Rouge</span></span><span class="m"><span>&amp; Roche</span></span></h1>
@@ -55,7 +55,7 @@
   </div>
 </section>
 <section class="pg ink" style="--v:0;--pos:50% 70%">
-  <img class="ph" data-h="o074-l" data-e="j023-l" data-alt-h="La plage de la Pointe Rouge en automne" data-alt-e="La plage de la Pointe Rouge en été" alt="" loading="lazy" decoding="async">
+  <img class="ph" data-h="o074-l" data-e="j023-l" data-alt-h="La plage de la Pointe Rouge en automne" data-alt-e="La plage de la Pointe Rouge en été" alt="" data-q decoding="async">
   <div class="tx t-tl d-bl">
     <span class="u">La plage</span>
     <h2><span class="hiver"><span class="m"><span>Ouvert</span></span><span class="m"><span>en février.</span></span></span><span class="ete"><span class="m"><span>Ouvert</span></span><span class="m"><span>en août.</span></span></span></h2>
@@ -63,7 +63,7 @@
   </div>
 </section>
 <section class="pg " style="--v:.28;--pos:50% 60%">
-  <img class="ph" data-h="o007-l" data-e="j012-l" data-alt-h="La salle et son papier peint corail" data-alt-e="La terrasse sous les canisses" alt="" loading="lazy" decoding="async">
+  <img class="ph" data-h="o007-l" data-e="j012-l" data-alt-h="La salle et son papier peint corail" data-alt-e="La terrasse sous les canisses" alt="" data-q decoding="async">
   <div class="tx t-bl">
     <span class="u">En ce moment</span>
     <h2><span class="hiver"><span class="m"><span>La salle</span></span></span><span class="ete"><span class="m"><span>La terrasse</span></span></span></h2>
@@ -71,7 +71,7 @@
   </div>
 </section>
 <section class="pg ink" id="matin" style="--v:0;--pos:50% 40%" data-offre="petit-dejeuner">
-  <img class="ph" src="assets/img/o039.jpg" srcset="assets/img/o039.jpg 1000w, assets/img/o039-m.jpg 1400w, assets/img/o039-l.jpg 2000w" sizes="100vw" alt="Une table de la salle le matin" loading="lazy" decoding="async">
+  <img class="ph" data-q data-src="assets/img/o039.jpg" data-srcset="assets/img/o039.jpg 1000w, assets/img/o039-m.jpg 1400w" sizes="100vw" alt="Une table de la salle le matin" decoding="async">
   <div class="tx bloc t-bloc-t">
     <span class="u">Petit-déjeuner · tous les jours</span>
     <h2 class="x"><span class="m"><span><span data-o="pd-prix">9 €</span>,</span></span><span class="m"><span>le matin.</span></span></h2>
@@ -80,7 +80,7 @@
   </div>
 </section>
 <section class="pg " id="noel" style="--v:.42;--pos:50% 60%" data-offre="noel">
-  <img class="ph" src="assets/img/o022.jpg" srcset="assets/img/o022.jpg 1000w, assets/img/o022-m.jpg 1400w, assets/img/o022-l.jpg 2000w" sizes="100vw" alt="Table dressée devant le papier peint corail" loading="lazy" decoding="async">
+  <img class="ph" data-q data-src="assets/img/o022.jpg" data-srcset="assets/img/o022.jpg 1000w, assets/img/o022-m.jpg 1400w" sizes="100vw" alt="Table dressée devant le papier peint corail" decoding="async">
   <div class="tx t-bl d-half d-right">
     <span class="u">Menu de Noël · <span data-o="no-dates">du 1er décembre au 2 janvier</span></span>
     <h2 class="x"><span class="m"><span>Noël,</span></span><span class="m"><span><span data-o="no-prix">48 €</span>.</span></span></h2>
@@ -89,7 +89,7 @@
   </div>
 </section>
 <section class="pg " id="jeudi" style="--v:.46;--pos:50% 40%" data-offre="afterwork">
-  <img class="ph" src="assets/img/j059.jpg" srcset="assets/img/j059.jpg 1000w, assets/img/j059-m.jpg 1400w, assets/img/j059-l.jpg 2000w" sizes="100vw" alt="Coucher de soleil depuis la terrasse" loading="lazy" decoding="async">
+  <img class="ph" data-q data-src="assets/img/j059.jpg" data-srcset="assets/img/j059.jpg 1000w, assets/img/j059-m.jpg 1400w" sizes="100vw" alt="Coucher de soleil depuis la terrasse" decoding="async">
   <div class="tx t-tr">
     <span class="u">Afterwork · <span data-o="aw-quand">tous les jeudis</span></span>
     <h2 class="x"><span class="m"><span><span data-o="aw-jour-h">Le jeudi,</span></span></span><span class="m"><span><span data-o="aw-heures">16 h – 20 h.</span></span></span></h2>
@@ -98,7 +98,7 @@
   </div>
 </section>
 <section class="pg " id="carte" style="--v:.1;--pos:60% 50%;--posd:60% 22%">
-  <img class="ph" src="assets/img/o093.jpg" srcset="assets/img/o093.jpg 1000w, assets/img/o093-m.jpg 1400w, assets/img/o093-l.jpg 2000w" sizes="100vw" alt="Sole meunière" loading="lazy" decoding="async">
+  <img class="ph" data-q data-src="assets/img/o093.jpg" data-srcset="assets/img/o093.jpg 1000w, assets/img/o093-m.jpg 1400w" sizes="100vw" alt="Sole meunière" decoding="async">
   <div class="tx t-tl">
     <span class="u">La carte · <span data-plat-rub>À table</span></span>
     <h2 class="s"><span class="m"><span><span data-plat>Sole meunière</span></span></span></h2>
@@ -107,7 +107,7 @@
   </div>
 </section>
 <section class="pg ink" style="--v:0">
-  <img class="ph" src="assets/img/o048.jpg" srcset="assets/img/o048.jpg 1000w, assets/img/o048-m.jpg 1400w, assets/img/o048-l.jpg 2000w" sizes="100vw" alt="Table dressée vue de dessus" loading="lazy" decoding="async">
+  <img class="ph" data-q data-src="assets/img/o048.jpg" data-srcset="assets/img/o048.jpg 1000w, assets/img/o048-m.jpg 1400w" sizes="100vw" alt="Table dressée vue de dessus" decoding="async">
   <div class="tx bloc t-bloc-b">
     <span class="u">Plat du jour</span>
     <h2 class="s"><span class="m"><span><span data-pdj-nom>Chaque midi.</span></span></span></h2>
@@ -115,7 +115,7 @@
   </div>
 </section>
 <section class="pg " style="--v:.22;--pos:50% 45%">
-  <img class="ph" data-h="o011-l" data-e="o045-l" data-alt-h="La terrasse couverte face à la mer" data-alt-e="La salle, tables dressées" alt="" loading="lazy" decoding="async">
+  <img class="ph" data-h="o011-l" data-e="o045-l" data-alt-h="La terrasse couverte face à la mer" data-alt-e="La salle, tables dressées" alt="" data-q decoding="async">
   <div class="tx t-br">
     <span class="u">Aussi</span>
     <h2 class="s"><span class="hiver"><span class="m"><span>La terrasse,</span></span><span class="m"><span>dès qu'il fait beau.</span></span></span><span class="ete"><span class="m"><span>La salle,</span></span><span class="m"><span>les jours de vent.</span></span></span></h2>
@@ -123,7 +123,7 @@
   </div>
 </section>
 <section class="pg " id="groupes" style="--v:.42">
-  <img class="ph" src="assets/img/j037.jpg" srcset="assets/img/j037.jpg 1000w, assets/img/j037-m.jpg 1400w, assets/img/j037-l.jpg 2000w" sizes="100vw" alt="La terrasse pleine au coucher du soleil" loading="lazy" decoding="async">
+  <img class="ph" data-q data-src="assets/img/j037.jpg" data-srcset="assets/img/j037.jpg 1000w, assets/img/j037-m.jpg 1400w" sizes="100vw" alt="La terrasse pleine au coucher du soleil" decoding="async">
   <div class="tx t-bl">
     <span class="u">Groupes &amp; privatisation</span>
     <h2 class="s"><span class="m"><span>La plage</span></span><span class="m"><span>pour vous seuls.</span></span></h2>
@@ -132,7 +132,7 @@
   </div>
 </section>
 <section class="pg " id="venir" style="--v:0;--pos:50% 18%;--posd:50% 52%">
-  <img class="ph" src="assets/img/o032.jpg" srcset="assets/img/o032.jpg 1000w, assets/img/o032-m.jpg 1400w, assets/img/o032-l.jpg 2000w" sizes="100vw" alt="La terrasse et la rade de Marseille" loading="lazy" decoding="async">
+  <img class="ph" data-q data-src="assets/img/o032.jpg" data-srcset="assets/img/o032.jpg 1000w, assets/img/o032-m.jpg 1400w" sizes="100vw" alt="La terrasse et la rade de Marseille" decoding="async">
   <div class="tx t-end">
     <span class="u">Venir</span>
     <dl>
@@ -154,7 +154,7 @@
 <script src="assets/vendor/ScrollTrigger.min.js"></script>
 <script src="assets/vendor/lenis.min.js"></script>
 <script>window.RRcfg={"tel": "04 91 73 03 14", "telLien": "+33491730314", "email": "fiducial@rougeetroche.fr", "formEndpoint": ""};</script>
-<script src="assets/js/core.js?v=202611141803"></script>
-<script src="assets/js/site.js?v=202611141803"></script>
+<script src="assets/js/core.js?v=202611141824"></script>
+<script src="assets/js/site.js?v=202611141824"></script>
 </body>
 </html>

@@ -23,8 +23,8 @@
 <meta name="geo.placename" content="Marseille">
 <link rel="icon" href="../assets/img/poisson.png">
 <link rel="preload" href="../assets/fonts/Gambarino-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../assets/fonts/site-fonts.css?v=202611141803">
-<link rel="stylesheet" href="../assets/css/site.css?v=202611141803">
+<link rel="stylesheet" href="../assets/fonts/site-fonts.css?v=202611141824">
+<link rel="stylesheet" href="../assets/css/site.css?v=202611141824">
 <script>(function(){var d=new Date(),m=('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2),a='11-15',b='03-15',f=null,s;try{s=new URLSearchParams(location.search).get('saison')||sessionStorage.getItem('rr-saison')}catch(e){}if(s!=='hiver'&&s!=='ete')s=f||((a<=b?(m>=a&&m<=b):(m>=a||m<=b))?'hiver':'ete');document.documentElement.setAttribute('data-saison',s);var n=s==='hiver'?'o001-l':'j013-l',l=document.createElement('link');l.rel='preload';l.as='image';l.href='../assets/img/'+n.slice(0,-2)+'.jpg';l.setAttribute('imagesrcset','../assets/img/'+n.slice(0,-2)+'.jpg 1000w, ../assets/img/'+n.slice(0,-2)+'-m.jpg 1400w, ../assets/img/'+n+'.jpg 2000w');l.setAttribute('imagesizes','100vw');document.head.appendChild(l)})();</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Restaurant", "@id": "https://www.rougeetroche-marseille.fr/#restaurant", "name": "Rouge et Roche", "url": "https://www.rougeetroche-marseille.fr/en/", "telephone": "+33 4 91 73 03 14", "image": ["https://www.rougeetroche-marseille.fr/assets/img/o032-l.jpg", "https://www.rougeetroche-marseille.fr/assets/img/o007-l.jpg", "https://www.rougeetroche-marseille.fr/assets/img/o093-l.jpg"], "description": "A restaurant with its feet in the sand on Pointe Rouge beach, Marseille. Open all year, every day 08:00 – 22:00. Homemade Mediterranean cooking, breakfast, Christmas menu, afterwork.", "address": {"@type": "PostalAddress", "streetAddress": "46 Avenue de Montredon", "postalCode": "13008", "addressLocality": "Marseille", "addressRegion": "Provence-Alpes-Côte d'Azur", "addressCountry": "FR"}, "hasMap": "https://www.google.com/maps?q=Rouge+et+Roche,+46+Avenue+de+Montredon,+13008+Marseille", "servesCuisine": ["Mediterranean", "French"], "priceRange": "€€", "acceptsReservations": "https://bookings.zenchef.com/results?rid=367179", "menu": "https://www.rougeetroche-marseille.fr/en/menu.html", "openingHoursSpecification": [{"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"], "opens": "08:00", "closes": "22:00"}], "paymentAccepted": "Carte bancaire, espèces, chèques, Chèques-Vacances, titres-restaurant, Apple Pay", "sameAs": ["https://www.instagram.com/rougeetroche/", "https://www.facebook.com/rougeetroche"]}</script>
 
@@ -46,7 +46,7 @@
 <main id="contenu">
 <div class="stack">
 <section class="pg " style="--v:.3">
-  <img class="ph" data-h="o001-l" data-e="j013-l" data-alt-h="The terrace and the sea seen from the dining room" data-alt-e="The terrace on a summer evening" alt="" decoding="async">
+  <img class="ph" data-h="o001-l" data-e="j013-l" data-alt-h="The terrace and the sea seen from the dining room" data-alt-e="The terrace on a summer evening" alt="" fetchpriority="high" decoding="async">
   <div class="issue u"><span>N° <span data-num>11</span> — <span data-mois></span></span><span>Pointe Rouge beach, Marseille</span></div>
   <div class="tx t-b">
     <h1><span class="m"><span>Rouge</span></span><span class="m"><span>&amp; Roche</span></span></h1>
@@ -55,7 +55,7 @@
   </div>
 </section>
 <section class="pg ink" style="--v:0;--pos:50% 70%">
-  <img class="ph" data-h="o074-l" data-e="j023-l" data-alt-h="Pointe Rouge beach in autumn" data-alt-e="Pointe Rouge beach in summer" alt="" loading="lazy" decoding="async">
+  <img class="ph" data-h="o074-l" data-e="j023-l" data-alt-h="Pointe Rouge beach in autumn" data-alt-e="Pointe Rouge beach in summer" alt="" data-q decoding="async">
   <div class="tx t-tl d-bl">
     <span class="u">The beach</span>
     <h2><span class="hiver"><span class="m"><span>Open</span></span><span class="m"><span>in February.</span></span></span><span class="ete"><span class="m"><span>Open</span></span><span class="m"><span>in August.</span></span></span></h2>
@@ -63,7 +63,7 @@
   </div>
 </section>
 <section class="pg " style="--v:.28;--pos:50% 60%">
-  <img class="ph" data-h="o007-l" data-e="j012-l" data-alt-h="The dining room and its coral wallpaper" data-alt-e="The terrace under the reed canopy" alt="" loading="lazy" decoding="async">
+  <img class="ph" data-h="o007-l" data-e="j012-l" data-alt-h="The dining room and its coral wallpaper" data-alt-e="The terrace under the reed canopy" alt="" data-q decoding="async">
   <div class="tx t-bl">
     <span class="u">Right now</span>
     <h2><span class="hiver"><span class="m"><span>Indoors</span></span></span><span class="ete"><span class="m"><span>The terrace</span></span></span></h2>
@@ -71,7 +71,7 @@
   </div>
 </section>
 <section class="pg ink" id="matin" style="--v:0;--pos:50% 40%" data-offre="petit-dejeuner">
-  <img class="ph" src="../assets/img/o039.jpg" srcset="../assets/img/o039.jpg 1000w, ../assets/img/o039-m.jpg 1400w, ../assets/img/o039-l.jpg 2000w" sizes="100vw" alt="A table in the dining room in the morning" loading="lazy" decoding="async">
+  <img class="ph" data-q data-src="../assets/img/o039.jpg" data-srcset="../assets/img/o039.jpg 1000w, ../assets/img/o039-m.jpg 1400w" sizes="100vw" alt="A table in the dining room in the morning" decoding="async">
   <div class="tx bloc t-bloc-t">
     <span class="u">Breakfast · every day</span>
     <h2 class="x"><span class="m"><span><span data-o="pd-prix">€9</span>,</span></span><span class="m"><span>mornings.</span></span></h2>
@@ -80,7 +80,7 @@
   </div>
 </section>
 <section class="pg " id="noel" style="--v:.42;--pos:50% 60%" data-offre="noel">
-  <img class="ph" src="../assets/img/o022.jpg" srcset="../assets/img/o022.jpg 1000w, ../assets/img/o022-m.jpg 1400w, ../assets/img/o022-l.jpg 2000w" sizes="100vw" alt="A laid table in front of the coral wallpaper" loading="lazy" decoding="async">
+  <img class="ph" data-q data-src="../assets/img/o022.jpg" data-srcset="../assets/img/o022.jpg 1000w, ../assets/img/o022-m.jpg 1400w" sizes="100vw" alt="A laid table in front of the coral wallpaper" decoding="async">
   <div class="tx t-bl d-half d-right">
     <span class="u">Christmas menu · <span data-o="no-dates">1 December to 2 January</span></span>
     <h2 class="x"><span class="m"><span>Christmas,</span></span><span class="m"><span><span data-o="no-prix">€48</span>.</span></span></h2>
@@ -89,7 +89,7 @@
   </div>
 </section>
 <section class="pg " id="jeudi" style="--v:.46;--pos:50% 40%" data-offre="afterwork">
-  <img class="ph" src="../assets/img/j059.jpg" srcset="../assets/img/j059.jpg 1000w, ../assets/img/j059-m.jpg 1400w, ../assets/img/j059-l.jpg 2000w" sizes="100vw" alt="Sunset from the terrace" loading="lazy" decoding="async">
+  <img class="ph" data-q data-src="../assets/img/j059.jpg" data-srcset="../assets/img/j059.jpg 1000w, ../assets/img/j059-m.jpg 1400w" sizes="100vw" alt="Sunset from the terrace" decoding="async">
   <div class="tx t-tr">
     <span class="u">Afterwork · <span data-o="aw-quand">every Thursday</span></span>
     <h2 class="x"><span class="m"><span><span data-o="aw-jour-h">Thursdays,</span></span></span><span class="m"><span><span data-o="aw-heures">4 pm – 8 pm.</span></span></span></h2>
@@ -98,7 +98,7 @@
   </div>
 </section>
 <section class="pg " id="carte" style="--v:.1;--pos:60% 50%;--posd:60% 22%">
-  <img class="ph" src="../assets/img/o093.jpg" srcset="../assets/img/o093.jpg 1000w, ../assets/img/o093-m.jpg 1400w, ../assets/img/o093-l.jpg 2000w" sizes="100vw" alt="Sole meunière" loading="lazy" decoding="async">
+  <img class="ph" data-q data-src="../assets/img/o093.jpg" data-srcset="../assets/img/o093.jpg 1000w, ../assets/img/o093-m.jpg 1400w" sizes="100vw" alt="Sole meunière" decoding="async">
   <div class="tx t-tl">
     <span class="u">The menu · <span data-plat-rub>Mains</span></span>
     <h2 class="s"><span class="m"><span><span data-plat>Sole meunière</span></span></span></h2>
@@ -107,7 +107,7 @@
   </div>
 </section>
 <section class="pg ink" style="--v:0">
-  <img class="ph" src="../assets/img/o048.jpg" srcset="../assets/img/o048.jpg 1000w, ../assets/img/o048-m.jpg 1400w, ../assets/img/o048-l.jpg 2000w" sizes="100vw" alt="A laid table seen from above" loading="lazy" decoding="async">
+  <img class="ph" data-q data-src="../assets/img/o048.jpg" data-srcset="../assets/img/o048.jpg 1000w, ../assets/img/o048-m.jpg 1400w" sizes="100vw" alt="A laid table seen from above" decoding="async">
   <div class="tx bloc t-bloc-b">
     <span class="u">Dish of the day</span>
     <h2 class="s"><span class="m"><span><span data-pdj-nom>Every lunchtime.</span></span></span></h2>
@@ -115,7 +115,7 @@
   </div>
 </section>
 <section class="pg " style="--v:.22;--pos:50% 45%">
-  <img class="ph" data-h="o011-l" data-e="o045-l" data-alt-h="The covered terrace facing the sea" data-alt-e="The dining room, tables laid" alt="" loading="lazy" decoding="async">
+  <img class="ph" data-h="o011-l" data-e="o045-l" data-alt-h="The covered terrace facing the sea" data-alt-e="The dining room, tables laid" alt="" data-q decoding="async">
   <div class="tx t-br">
     <span class="u">Also</span>
     <h2 class="s"><span class="hiver"><span class="m"><span>The terrace,</span></span><span class="m"><span>as soon as the sun is out.</span></span></span><span class="ete"><span class="m"><span>Indoors,</span></span><span class="m"><span>on windy days.</span></span></span></h2>
@@ -123,7 +123,7 @@
   </div>
 </section>
 <section class="pg " id="groupes" style="--v:.42">
-  <img class="ph" src="../assets/img/j037.jpg" srcset="../assets/img/j037.jpg 1000w, ../assets/img/j037-m.jpg 1400w, ../assets/img/j037-l.jpg 2000w" sizes="100vw" alt="The terrace, full at sunset" loading="lazy" decoding="async">
+  <img class="ph" data-q data-src="../assets/img/j037.jpg" data-srcset="../assets/img/j037.jpg 1000w, ../assets/img/j037-m.jpg 1400w" sizes="100vw" alt="The terrace, full at sunset" decoding="async">
   <div class="tx t-bl">
     <span class="u">Groups &amp; private hire</span>
     <h2 class="s"><span class="m"><span>The beach,</span></span><span class="m"><span>all to yourselves.</span></span></h2>
@@ -132,7 +132,7 @@
   </div>
 </section>
 <section class="pg " id="venir" style="--v:0;--pos:50% 18%;--posd:50% 52%">
-  <img class="ph" src="../assets/img/o032.jpg" srcset="../assets/img/o032.jpg 1000w, ../assets/img/o032-m.jpg 1400w, ../assets/img/o032-l.jpg 2000w" sizes="100vw" alt="The terrace and the bay of Marseille" loading="lazy" decoding="async">
+  <img class="ph" data-q data-src="../assets/img/o032.jpg" data-srcset="../assets/img/o032.jpg 1000w, ../assets/img/o032-m.jpg 1400w" sizes="100vw" alt="The terrace and the bay of Marseille" decoding="async">
   <div class="tx t-end">
     <span class="u">Find us</span>
     <dl>
@@ -154,7 +154,7 @@
 <script src="../assets/vendor/ScrollTrigger.min.js"></script>
 <script src="../assets/vendor/lenis.min.js"></script>
 <script>window.RRcfg={"tel": "04 91 73 03 14", "telLien": "+33491730314", "email": "fiducial@rougeetroche.fr", "formEndpoint": ""};</script>
-<script src="../assets/js/core.js?v=202611141803"></script>
-<script src="../assets/js/site.js?v=202611141803"></script>
+<script src="../assets/js/core.js?v=202611141824"></script>
+<script src="../assets/js/site.js?v=202611141824"></script>
 </body>
 </html>

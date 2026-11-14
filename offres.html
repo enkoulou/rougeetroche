@@ -23,8 +23,8 @@
 <meta name="geo.placename" content="Marseille">
 <link rel="icon" href="assets/img/poisson.png">
 <link rel="preload" href="assets/fonts/Gambarino-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/fonts/site-fonts.css?v=202611141803">
-<link rel="stylesheet" href="assets/css/site.css?v=202611141803">
+<link rel="stylesheet" href="assets/fonts/site-fonts.css?v=202611141824">
+<link rel="stylesheet" href="assets/css/site.css?v=202611141824">
 <script>(function(){var d=new Date(),m=('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2),a='11-15',b='03-15',f=null,s;try{s=new URLSearchParams(location.search).get('saison')||sessionStorage.getItem('rr-saison')}catch(e){}if(s!=='hiver'&&s!=='ete')s=f||((a<=b?(m>=a&&m<=b):(m>=a||m<=b))?'hiver':'ete');document.documentElement.setAttribute('data-saison',s);var n=s==='hiver'?'o014-l':'o014-l',l=document.createElement('link');l.rel='preload';l.as='image';l.href='assets/img/'+n.slice(0,-2)+'.jpg';l.setAttribute('imagesrcset','assets/img/'+n.slice(0,-2)+'.jpg 1000w, assets/img/'+n.slice(0,-2)+'-m.jpg 1400w, assets/img/'+n+'.jpg 2000w');l.setAttribute('imagesizes','100vw');document.head.appendChild(l)})();</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Restaurant", "@id": "https://www.rougeetroche-marseille.fr/#restaurant", "name": "Rouge et Roche", "url": "https://www.rougeetroche-marseille.fr/", "telephone": "+33 4 91 73 03 14", "image": ["https://www.rougeetroche-marseille.fr/assets/img/o032-l.jpg", "https://www.rougeetroche-marseille.fr/assets/img/o007-l.jpg", "https://www.rougeetroche-marseille.fr/assets/img/o093-l.jpg"], "description": "Restaurant méditerranéen fait maison, sur la plage de la Pointe Rouge à Marseille. Ouvert toute l'année.", "address": {"@type": "PostalAddress", "streetAddress": "46 Avenue de Montredon", "postalCode": "13008", "addressLocality": "Marseille", "addressRegion": "Provence-Alpes-Côte d'Azur", "addressCountry": "FR"}, "hasMap": "https://www.google.com/maps?q=Rouge+et+Roche,+46+Avenue+de+Montredon,+13008+Marseille", "servesCuisine": ["Méditerranéenne", "Française"], "priceRange": "€€", "acceptsReservations": "https://bookings.zenchef.com/results?rid=367179", "menu": "https://www.rougeetroche-marseille.fr/carte.html", "openingHoursSpecification": [{"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"], "opens": "08:00", "closes": "22:00"}], "paymentAccepted": "Carte bancaire, espèces, chèques, Chèques-Vacances, titres-restaurant, Apple Pay", "sameAs": ["https://www.instagram.com/rougeetroche/", "https://www.facebook.com/rougeetroche"]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://www.rougeetroche-marseille.fr/"}, {"@type": "ListItem", "position": 2, "name": "Les offres", "item": "https://www.rougeetroche-marseille.fr/offres.html"}]}</script>
@@ -50,7 +50,7 @@
   </div>
 </header>
 <section class="pg ink" id="matin" style="--v:0;--pos:50% 40%" data-offre="petit-dejeuner">
-  <img class="ph" src="assets/img/o039.jpg" srcset="assets/img/o039.jpg 1000w, assets/img/o039-m.jpg 1400w, assets/img/o039-l.jpg 2000w" sizes="100vw" alt="Une table de la salle le matin" loading="lazy" decoding="async">
+  <img class="ph" data-q data-src="assets/img/o039.jpg" data-srcset="assets/img/o039.jpg 1000w, assets/img/o039-m.jpg 1400w" sizes="100vw" alt="Une table de la salle le matin" decoding="async">
   <div class="tx bloc t-bloc-t">
     <span class="u">Petit-déjeuner · tous les jours</span>
     <h2 class="x"><span class="m"><span><span data-o="pd-prix">9 €</span>,</span></span><span class="m"><span>le matin.</span></span></h2>
@@ -62,7 +62,7 @@
   <div class="acts"><a class="cta u" href="acces.html">Venir</a></div>
 </section>
 <section class="pg " id="noel" style="--v:.42;--pos:50% 60%" data-offre="noel">
-  <img class="ph" src="assets/img/o022.jpg" srcset="assets/img/o022.jpg 1000w, assets/img/o022-m.jpg 1400w, assets/img/o022-l.jpg 2000w" sizes="100vw" alt="Table dressée devant le papier peint corail" loading="lazy" decoding="async">
+  <img class="ph" data-q data-src="assets/img/o022.jpg" data-srcset="assets/img/o022.jpg 1000w, assets/img/o022-m.jpg 1400w" sizes="100vw" alt="Table dressée devant le papier peint corail" decoding="async">
   <div class="tx t-bl">
     <span class="u">Menu de Noël</span>
     <h2 class="x"><span class="m"><span>Noël,</span></span><span class="m"><span><span data-o="no-prix">48 €</span>.</span></span></h2>
@@ -75,7 +75,7 @@
   <div class="acts"><a class="cta u" href="https://bookings.zenchef.com/results?rid=367179" target="_blank" rel="noopener" data-zc-action="open">Réserver le menu de Noël</a><a class="go u" href="privatisation.html">Venir en groupe</a></div>
 </section>
 <section class="pg " id="jeudi" style="--v:.46;--pos:50% 40%" data-offre="afterwork">
-  <img class="ph" src="assets/img/j059.jpg" srcset="assets/img/j059.jpg 1000w, assets/img/j059-m.jpg 1400w, assets/img/j059-l.jpg 2000w" sizes="100vw" alt="Coucher de soleil depuis la terrasse" loading="lazy" decoding="async">
+  <img class="ph" data-q data-src="assets/img/j059.jpg" data-srcset="assets/img/j059.jpg 1000w, assets/img/j059-m.jpg 1400w" sizes="100vw" alt="Coucher de soleil depuis la terrasse" decoding="async">
   <div class="tx t-tr">
     <span class="u">Afterwork</span>
     <h2 class="x"><span class="m"><span><span data-o="aw-jour-h">Le jeudi,</span></span></span><span class="m"><span><span data-o="aw-heures">16 h – 20 h.</span></span></span></h2>
@@ -99,7 +99,7 @@
 <script src="assets/vendor/ScrollTrigger.min.js"></script>
 <script src="assets/vendor/lenis.min.js"></script>
 <script>window.RRcfg={"tel": "04 91 73 03 14", "telLien": "+33491730314", "email": "fiducial@rougeetroche.fr", "formEndpoint": ""};</script>
-<script src="assets/js/core.js?v=202611141803"></script>
-<script src="assets/js/site.js?v=202611141803"></script>
+<script src="assets/js/core.js?v=202611141824"></script>
+<script src="assets/js/site.js?v=202611141824"></script>
 </body>
 </html>
