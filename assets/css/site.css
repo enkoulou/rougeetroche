@@ -316,3 +316,8 @@ html.papier body::before{opacity:1}
 .fld textarea:focus{border-color:var(--paper);background:rgba(244,239,231,.11)}
 /* sans animations (réglage du visiteur, ou ?calme=1) : pas de fondu non plus */
 html.calme body::before,html.calme .marque{transition:none}
+
+/* note Google */
+.avis{margin-top:16px;max-width:none!important}
+.avis a{border-bottom:1px solid currentColor;padding-bottom:2px}
+.fin .avis{margin-top:30px}

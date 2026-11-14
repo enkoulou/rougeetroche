@@ -40,5 +40,13 @@
     "naf": "5610A",
     "siege": "46 avenue de Montredon, 13008 Marseille",
     "_aCompleter": "Ville du RCS, directeur de la publication, hébergeur (à la mise en ligne)"
+  },
+  "avisGoogle": {
+    "_aide": "Note et nombre d'avis relevés à la main sur la fiche Google du restaurant. À mettre à jour de temps en temps (puis relancer outils/build.py). 'avis' peut recevoir des avis choisis par le restaurant : {\"auteur\": \"Prénom\", \"texte\": {\"fr\": \"…\", \"en\": \"…\"}}.",
+    "note": 4.6,
+    "nombre": 1474,
+    "releve": "2026-11-14",
+    "lien": "https://www.google.com/maps?cid=7479910657457057162",
+    "avis": []
   }
 }

@@ -129,7 +129,7 @@
     appliquer(saison);
     const vedettes = [];
     if (carte) carte.cartes[0].sections.forEach(s => s.plats.forEach(p => { if (p.vedette) vedettes.push({ nom: p.nom[lang], prix: p.prix, photo: p.photo, rubrique: s.titre[lang] }); }));
-    return { saison, pdj: platDuJour(pd), carte, vedettes, offres, today };
+    return { saison, pdj: platDuJour(pd), pdjHabituel: (pd && pd.prixHabituel) || null, carte, vedettes, offres, today };
   });
 
   /* ── signature : rouge sur fond clair (papier, écran à texte sombre), couleur papier sur une photo ou sur le sommaire ── */

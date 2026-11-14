@@ -1,5 +1,6 @@
 {
-  "_aide": "Un plat par date (AAAA-MM-JJ). Seul le plat dont la date est celle du jour s'affiche ; sinon le site écrit « Plat du jour chaque midi, demandez-le en salle ». 'photo' est facultatif (nom d'un fichier de assets/img, sans .jpg).",
+  "_aide": "Un plat par date (AAAA-MM-JJ). Seul le plat dont la date est celle du jour s'affiche ; sinon le site écrit « Plat du jour chaque midi, demandez-le en salle ». 'photo' est facultatif (nom d'un fichier de assets/img, sans .jpg). 'prixHabituel' est le prix du plat du jour affiché quand aucun plat n'est saisi pour la date du jour, ou quand un plat est saisi sans prix.",
+  "prixHabituel": 21,
   "_exemple": {
     "date": "2026-01-15",
     "nom": {

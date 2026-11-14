@@ -107,14 +107,16 @@
     });
   }
 
-  RR.ready.then(({ pdj, carte, vedettes, offres, today }) => {
+  RR.ready.then(({ pdj, pdjHabituel, carte, vedettes, offres, today }) => {
     appliquerOffres(offres, today);
     /* ── plat du jour : uniquement celui de la date du jour ── */
     if (pdj) {
       $$('[data-pdj-nom]').forEach(e => e.textContent = L(pdj.nom));
-      $$('[data-pdj-txt]').forEach(e => e.textContent = (pdj.prix ? RR.euro(pdj.prix) + ' — ' : '') + (en ? 'served this lunchtime.' : 'servi ce midi.'));
+      const px = pdj.prix || pdjHabituel;   // plat saisi sans prix : le prix habituel
+      $$('[data-pdj-txt]').forEach(e => e.textContent = (px ? RR.euro(px) + ' — ' : '') + (en ? 'served this lunchtime.' : 'servi ce midi.'));
       if (pdj.photo) $$('[data-pdj-im]').forEach(e => { e.hidden = false; e.innerHTML = `<img src="${RR.base}assets/img/${esc(pdj.photo)}.jpg" alt="">`; });
     }
+    else if (pdjHabituel) $$('[data-pdj-txt]').forEach(e => e.textContent = en ? 'A dish of the day every lunchtime, ' + RR.euro(pdjHabituel) + '. Ask your waiter.' : 'Plat du jour chaque midi, ' + RR.euro(pdjHabituel) + '. Demandez-le en salle.');
     /* ── plat mis en avant sur l'accueil (prix lu dans la carte) ── */
     const vd = vedettes.find(v => v.photo === 'o094');
     if (vd) { $$('[data-plat]').forEach(e => e.textContent = vd.nom.split(',')[0]); $$('[data-plat-prix]').forEach(e => e.textContent = RR.euro(vd.prix)); $$('[data-plat-rub]').forEach(e => e.textContent = vd.rubrique); }
