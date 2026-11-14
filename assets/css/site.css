@@ -1,7 +1,7 @@
 /* Rouge et Roche — v2 « Le magazine »
    Une photo plein écran par écran, des titres immenses, une interface presque invisible.
    Deux couleurs : l'encre et le papier. Deux caractères : Gambarino (titres), Switzer (texte). */
-:root{--ink:#0E0C0A;--paper:#F4EFE7;--g:clamp(16px,2.6vw,44px);--d:'Gambarino',Georgia,serif;--t:'Switzer',system-ui,sans-serif;--rule:rgba(14,12,10,.18)}
+:root{--ink:#0E0C0A;--paper:#F4EFE7;--rouge:#8E2F1F;--g:clamp(16px,2.6vw,44px);--d:'Gambarino',Georgia,serif;--t:'Switzer',system-ui,sans-serif;--rule:rgba(14,12,10,.18)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{background:var(--ink);overflow-x:clip;-webkit-text-size-adjust:100%}
 body{font-family:var(--t);color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased;font-size:16px;line-height:1.45}
@@ -18,7 +18,7 @@ img{display:block}
 .m>span{display:block}
 .ink{color:var(--ink)}
 .go{display:inline-block;margin-top:22px;border-bottom:1px solid currentColor;padding-bottom:3px}
-.cta{display:inline-block;background:var(--ink);color:var(--paper);padding:18px 26px}
+.cta{display:inline-block;background:var(--rouge);color:var(--paper);padding:18px 26px}
 .cta.inv{background:var(--paper);color:var(--ink)}
 [data-saison=hiver] .ete,[data-saison=ete] .hiver{display:none}
 
@@ -32,7 +32,7 @@ img{display:block}
 .folio b{font-weight:500}
 
 /* ── sommaire ── */
-.somm{position:fixed;inset:0;z-index:45;background:var(--ink);color:var(--paper);padding:84px var(--g) 64px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;clip-path:inset(0 0 100% 0);visibility:hidden;transition:clip-path .9s cubic-bezier(.7,0,.2,1),visibility 0s .9s}
+.somm{position:fixed;inset:0;z-index:45;background:var(--rouge);color:var(--paper);padding:84px var(--g) 64px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;clip-path:inset(0 0 100% 0);visibility:hidden;transition:clip-path .9s cubic-bezier(.7,0,.2,1),visibility 0s .9s}
 .somm.on{clip-path:inset(0);visibility:visible;transition:clip-path .9s cubic-bezier(.7,0,.2,1)}
 .somm ol{list-style:none}
 .somm li a{display:flex;align-items:baseline;gap:14px;font:400 clamp(38px,11.2vw,120px)/1.05 var(--d);letter-spacing:-.02em}
@@ -67,7 +67,7 @@ img{display:block}
 .t-br{bottom:70px;right:0;text-align:right}.t-br p{margin-left:auto}
 .t-bloc-t{top:58px;left:0;max-width:100%}
 .t-bloc-b{left:0;bottom:0;padding-bottom:64px;width:min(100%,560px)}
-.t-end{left:0;right:0;bottom:0;background:var(--ink);padding:28px var(--g) 66px}
+.t-end{left:0;right:0;bottom:0;background:var(--rouge);padding:28px var(--g) 66px}
 .t-end dl{display:grid;grid-template-columns:1fr;gap:18px;margin-top:22px}
 .t-end dt{opacity:.7}
 .t-end dd{font:400 clamp(24px,3vw,40px)/1.1 var(--d);margin-top:4px}
@@ -125,7 +125,7 @@ img{display:block}
 .prose li{padding:14px 0;border-bottom:1px solid var(--rule);font-size:17px;font-weight:500}
 
 /* formulaire */
-.form{background:var(--ink);color:var(--paper);padding:80px var(--g) 110px}
+.form{background:var(--rouge);color:var(--paper);padding:80px var(--g) 110px}
 .form h2{font:400 clamp(60px,19vw,250px)/.86 var(--d);letter-spacing:-.025em}
 .form .intro{max-width:36ch;margin:24px 0 46px}
 .form .tel{font:400 clamp(34px,9vw,84px)/1 var(--d);letter-spacing:-.02em;display:block;margin-top:6px}
@@ -182,7 +182,7 @@ form.dem{display:grid;grid-template-columns:1fr;gap:26px 30px}
 .map iframe{width:100%;height:100%;border:0;filter:grayscale(1) contrast(1.05) sepia(.12)}
 
 /* fin de page + colophon */
-.fin{background:var(--ink);color:var(--paper);margin-top:90px;padding:80px var(--g) 40px}
+.fin{background:var(--rouge);color:var(--paper);margin-top:90px;padding:80px var(--g) 40px}
 .fin h2{font:400 clamp(60px,19vw,250px)/.86 var(--d);letter-spacing:-.025em}
 .fin .acts{display:flex;flex-wrap:wrap;gap:22px;align-items:center;margin-top:34px}
 .fin .acts .go{margin:0}
@@ -254,7 +254,7 @@ form.dem{display:grid;grid-template-columns:1fr;gap:26px 30px}
 }
 
 /* compléments */
-.colbar{background:var(--ink);color:var(--paper);padding:0 var(--g)}
+.colbar{background:var(--rouge);color:var(--paper);padding:0 var(--g)}
 .colbar .col{margin-top:0;border-top-color:rgba(244,239,231,.3)}
 @media (min-width:900px){.pg .ph{object-position:var(--posd,var(--pos,50% 50%))}}
 @media (min-width:900px){.form h2{font-size:8.6vw;white-space:nowrap}}
@@ -308,7 +308,7 @@ html.papier body::before{opacity:1}
 .go{font-size:13px;font-weight:600;letter-spacing:.12em;border-bottom-width:2px;padding:8px 0 5px}
 .pg:not(.ink) .tx:not(.bloc) .go{text-shadow:0 1px 14px rgba(14,12,10,.7)}
 /* boutons au trait (Appeler, Itinéraire) */
-.cta.bord{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}
+.cta.bord{background:transparent;color:var(--rouge);box-shadow:inset 0 0 0 1.5px var(--rouge)}
 /* bouton de saison : plus lisible */
 .ui.bot [data-bascule]{font-weight:600;border-bottom:1px solid currentColor;padding-bottom:2px}
 /* zone « Votre projet » : un vrai cadre */
@@ -352,3 +352,16 @@ html.calme body::before,html.calme .marque{transition:none}
 .faq dt{font:500 17px/1.4 var(--t);opacity:1}
 .faq dd{font:400 17px/1.5 var(--t);letter-spacing:0;opacity:.78;max-width:52ch}
 @media (min-width:900px){.faq dl div{grid-template-columns:1fr 1fr;gap:30px}}
+
+/* ── couleurs du restaurant : les blocs pleins (pied de page, sommaire, formulaire, « Venir », boutons) sont au rouge du logo,
+      plus au noir. Le noir reste pour le texte et pour le fond derrière les photos. ── */
+.t-end .cta.inv,.fin .cta.inv,.form .cta.inv{color:var(--rouge)}
+.form-msg{color:var(--ink)}
+/* le menu ne s'inverse plus tout seul (sur du rouge, cela donnait du bleu) : core.js lui dit si le fond est clair ou sombre */
+.ui{mix-blend-mode:normal;color:var(--paper);transition:color .25s ease}
+html.haut-clair .ui.top,html.bas-clair .ui.bot{color:var(--ink)}
+html.calme .ui{transition:none}
+
+/* menu clair : un halo sombre le garde lisible si un coin de photo est plus clair que prévu ; aucun halo quand il est en encre */
+.ui{text-shadow:0 1px 10px rgba(14,12,10,.65),0 0 2px rgba(14,12,10,.35)}
+html.haut-clair .ui.top,html.bas-clair .ui.bot{text-shadow:none}

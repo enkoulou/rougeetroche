@@ -149,30 +149,47 @@
   const marque = document.querySelector('.marque');
   if (marque) {
     let vu = false;
-    // le haut de la photo est-il clair ? On mesure la luminosité du coin haut-gauche de l'image (une fois par photo)
+    // La photo est-elle claire à cet endroit ? On mesure la luminosité du haut ou du bas de l'image (une fois par photo).
     const mesures = new WeakMap();
-    const hautClair = pg => {
+    const photoClaire = (pg, bas) => {
       const im = pg.querySelector('img.ph'), src = im && (im.currentSrc || im.src);
       if (!im || !im.naturalWidth || /^data:/.test(src)) return true;
-      const m = mesures.get(im); if (m && m.src === src) return m.v;
+      const cle = src + (bas ? '|bas|' : '|haut|') + innerWidth + 'x' + innerHeight, m = mesures.get(im) || {};
+      if (cle in m) return m[cle];
+      let v = true;
       try {
+        // la photo est recadrée pour remplir l'écran : on mesure la partie réellement affichée, pas l'image entière
+        const W = im.clientWidth, H = im.clientHeight, nw = im.naturalWidth, nh = im.naturalHeight, k = Math.max(W / nw, H / nh);
+        const vw = W / k, vh = H / k, pos = getComputedStyle(im).objectPosition.split(' ').map(parseFloat);
+        const x0 = (nw - vw) * (pos[0] || 50) / 100, y0 = (nh - vh) * (pos[1] || 50) / 100, h = vh * 0.12;
         const c = document.createElement('canvas'); c.width = 16; c.height = 8;
-        const x = c.getContext('2d'); x.drawImage(im, 0, 0, im.naturalWidth * 0.6, im.naturalHeight * 0.18, 0, 0, 16, 8);
+        const x = c.getContext('2d');
+        x.drawImage(im, x0, bas ? y0 + vh - h : y0, vw, h, 0, 0, 16, 8);
         const d = x.getImageData(0, 0, 16, 8).data; let s = 0;
-        for (let i = 0; i < d.length; i += 4) s += 0.3 * d[i] + 0.59 * d[i + 1] + 0.11 * d[i + 2];
-        const v = s / (d.length / 4) > 135; mesures.set(im, { src, v }); return v;
-      } catch (_) { return true; }
+        for (let q = 0; q < d.length; q += 4) s += 0.3 * d[q] + 0.59 * d[q + 1] + 0.11 * d[q + 2];
+        v = s / (d.length / 4) > 135;
+      } catch (_) {}
+      m[cle] = v; mesures.set(im, m); return v;
+    };
+    // Que trouve-t-on sous ce point ? « papier » (fond clair du site), « clair » (bloc papier ou photo claire), ou « sombre »
+    // (photo voilée, bloc rouge : pied de page, formulaire, sommaire).
+    const fond = (x, y, bas) => {
+      const d = document.elementsFromPoint(x, y).find(el => !el.closest('.marque, .ui'));
+      if (!d) return 'papier';
+      if (d.closest('.bloc')) return 'clair';
+      const z = d.closest('.pg, .somm, .lb, .form, .fin, .colbar, .t-end');
+      if (!z) return 'papier';
+      return z.classList.contains('pg') && z.classList.contains('ink') && photoClaire(z, bas) ? 'clair' : 'sombre';
     };
     const teinte = () => {
       vu = false;
       const r = marque.getBoundingClientRect();
-      const dessous = document.elementsFromPoint(r.left + r.width / 2, r.top + r.height / 2).find(el => !el.closest('.marque, .ui'));
-      // zones sombres : photos, sommaire, visionneuse, formulaire, pied de page → signature claire, pas de bandeau
-      const z = dessous && dessous.closest('.pg, .somm, .lb, .form, .fin, .colbar');
-      // signature rouge : sur le papier, et sur les photos sans voile (écrans « ink ») dont le haut est réellement clair ;
-      // partout ailleurs (photos sombres ou voilées), elle est claire
-      marque.classList.toggle('clair', !z || (z.classList.contains('ink') && hautClair(z)));
-      root.classList.toggle('papier', !z);   // sur le papier, l'en-tête reçoit un fond plein (voir site.css)
+      const haut = fond(r.left + r.width / 2, r.top + r.height / 2, false);
+      const bas = fond(r.left + 20, innerHeight - 24, true);
+      marque.classList.toggle('clair', haut !== 'sombre');        // signature rouge sur fond clair, couleur papier sur fond sombre
+      root.classList.toggle('papier', haut === 'papier');         // sur le papier, l'en-tête reçoit un fond plein (voir site.css)
+      root.classList.toggle('haut-clair', haut !== 'sombre');     // menu du haut : encre sur fond clair, papier sur fond sombre
+      root.classList.toggle('bas-clair', bas !== 'sombre');       // idem pour la ligne du bas (numéro d'écran, bouton de saison)
     };
     const plusTard = () => { if (!vu) { vu = true; setTimeout(teinte, 60); } };
     addEventListener('scroll', plusTard, { passive: true }); addEventListener('resize', plusTard);
